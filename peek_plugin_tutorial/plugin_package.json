@@ -11,7 +11,10 @@
     "requiresServices": [
         "server",
         "storage",
-        "admin"
+        "admin",
+        "client",
+        "mobile",
+        "agent"
     ],
     "server": {
     },
@@ -22,5 +25,16 @@
         "showHomeLink": true,
         "appDir": "_private/admin-app",
         "appModule": "tutorial.module#TutorialModule"
+    },
+    "client": {
+    },
+    "mobile": {
+        "showHomeLink": true,
+        "appDir": "_private/mobile-app",
+        "appModule": "tutorial.module#TutorialModule",
+        "assetDir": "_private/mobile-assets",
+        "icon": "/assets/peek_plugin_tutorial/icon.png"
+    },
+    "agent": {
     }
 }

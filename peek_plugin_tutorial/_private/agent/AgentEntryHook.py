@@ -1,18 +1,15 @@
 import logging
 
-from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHookABC
-
-from peek_plugin_tutorial._private.storage import DeclarativeBase
-from peek_plugin_base.server.PluginServerStorageEntryHookABC import PluginServerStorageEntryHookABC
+from peek_plugin_base.agent.PluginAgentEntryHookABC import PluginAgentEntryHookABC
 
 logger = logging.getLogger(__name__)
 
 
-class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC):
+class AgentEntryHook(PluginAgentEntryHookABC):
     def __init__(self, *args, **kwargs):
         """" Constructor """
         # Call the base classes constructor
-        PluginServerEntryHookABC.__init__(self, *args, **kwargs)
+        PluginAgentEntryHookABC.__init__(self, *args, **kwargs)
 
         #: Loaded Objects, This is a list of all objects created when we start
         self._loadedObjects = []
@@ -24,12 +21,7 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         Place any custom initialiastion steps here.
 
         """
-        DeclarativeBase.loadStorageTuples()
         logger.debug("Loaded")
-
-    @property
-    def dbMetadata(self):
-        return DeclarativeBase.metadata
 
     def start(self):
         """ Load
@@ -38,25 +30,6 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         Place any custom initialiastion steps here.
 
         """
-
-        session = self.dbSessionCreator()
-
-        # This will retrieve all the settings
-        from peek_plugin_tutorial._private.storage.Setting import globalSetting
-        allSettings = globalSetting(session)
-        logger.debug(allSettings)
-
-        # This will retrieve the value of property1
-        from peek_plugin_tutorial._private.storage.Setting import PROPERTY1
-        value1 = globalSetting(session, key=PROPERTY1)
-        logger.debug("value1 = %s" % value1)
-
-        # This will set property1
-        globalSetting(session, key=PROPERTY1, value="new value 1")
-        session.commit()
-
-        session.close()
-
         logger.debug("Started")
 
     def stop(self):
