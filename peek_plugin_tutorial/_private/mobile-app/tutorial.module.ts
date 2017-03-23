@@ -2,12 +2,22 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {Routes} from "@angular/router";
 
-// Import a small abstraction library to switch between nativescript and web
+// Import a small abstraction library to switch between NativeScript and web
 import {PeekModuleFactory} from "@synerty/peek-web-ns/index.web";
 
 // Import the default route component
 import {TutorialComponent} from "./tutorial.component";
 
+// Import the required classes from VortexJS
+import {TupleOfflineStorageNameService, TupleOfflineStorageService} from "@synerty/vortexjs";
+
+// Import the names we need for the
+import {tutorialTupleOfflineServiceName} from "@peek/peek_plugin_tutorial/_private";
+
+
+export function tupleOfflineStorageNameServiceFactory() {
+    return new TupleOfflineStorageNameService(tutorialTupleOfflineServiceName);
+}
 
 // Define the child routes for this plugin
 export const pluginRoutes: Routes = [
@@ -30,7 +40,11 @@ export const pluginRoutes: Routes = [
         CommonModule,
         PeekModuleFactory.RouterModule.forChild(pluginRoutes)],
     exports: [],
-    providers: [],
+    providers: [TupleOfflineStorageService, {
+        provide: TupleOfflineStorageNameService,
+        useFactory:tupleOfflineStorageNameServiceFactory
+        },
+    ],
     declarations: [TutorialComponent]
 })
 export class TutorialModule
