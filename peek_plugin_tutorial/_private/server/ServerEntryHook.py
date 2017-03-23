@@ -5,6 +5,9 @@ from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHo
 from peek_plugin_tutorial._private.storage import DeclarativeBase, loadStorageTuples
 from peek_plugin_base.server.PluginServerStorageEntryHookABC import PluginServerStorageEntryHookABC
 
+from peek_plugin_tutorial._private.tuples import loadPrivateTuples
+from peek_plugin_tutorial.tuples import loadPublicTuples
+
 logger = logging.getLogger(__name__)
 
 
@@ -25,12 +28,13 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
 
         """
         loadStorageTuples()
+        loadPrivateTuples()
+        loadPublicTuples()
         logger.debug("Loaded")
 
     @property
     def dbMetadata(self):
-        return DeclarativeBase.metadata #TODO: comments on commit:
-        # https://stash.synerty.com/projects/PEEK/repos/synerty-peek/commits/5ca1ad0da8b200323de5ca456a6b4b44bd3778f0
+        return DeclarativeBase.metadata
 
     def start(self):
         """ Load
