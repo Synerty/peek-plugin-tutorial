@@ -2,6 +2,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
 import {EditStringIntComponent} from "./edit-string-int-table/edit.component";
+import {FormsModule} from "@angular/forms";
 
 // Import our components
 import {TutorialComponent} from "./tutorial.component";
@@ -19,7 +20,8 @@ export const pluginRoutes: Routes = [
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forChild(pluginRoutes)],
+        RouterModule.forChild(pluginRoutes),FormsModule],
+
     exports: [],
     providers: [],
     declarations: [TutorialComponent, EditStringIntComponent]

@@ -24,7 +24,8 @@
     "admin": {
         "showHomeLink": true,
         "appDir": "_private/admin-app",
-        "appModule": "tutorial.module#TutorialModule"
+        "appModule": "tutorial.module#TutorialModule",
+        "moduleDir": "plugin-module"
     },
     "client": {
     },

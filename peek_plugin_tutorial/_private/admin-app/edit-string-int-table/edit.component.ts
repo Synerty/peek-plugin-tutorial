@@ -6,7 +6,7 @@ import {
     TupleLoader
 } from "@synerty/vortexjs";
 import {StringIntTuple,
-    tutorialPluginFilt
+    tutorialFilt
 } from "@peek/peek_plugin_tutorial/_private";
 
 
@@ -28,7 +28,7 @@ export class EditStringIntComponent extends ComponentLifecycleEventEmitter {
         super();
 
         this.loader = vortexService.createTupleLoader(this,
-            () => extend({}, this.filt, tutorialPluginFilt));
+            () => extend({}, this.filt, tutorialFilt));
 
         this.loader.observable
             .subscribe((tuples:StringIntTuple[]) => this.items = tuples);
