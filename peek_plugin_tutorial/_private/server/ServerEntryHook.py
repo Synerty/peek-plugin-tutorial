@@ -48,6 +48,9 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
 
         """
 
+        tupleObservable = makeTupleDataObservableHandler(self.dbSessionCreator)
+        self._loadedObjects.append(tupleObservable)
+
         session = self.dbSessionCreator()
 
         # This will retrieve all the settings
@@ -66,10 +69,8 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
 
         session.close()
 
-        self._loadedObjects.extend(makeAdminBackendHandlers(self.dbSessionCreator))
-
-        tupleObservable = makeTupleDataObservableHandler(self.dbSessionCreator)
-        self._loadedObjects.append(tupleObservable)
+        self._loadedObjects.extend(
+            makeAdminBackendHandlers(tupleObservable, self.dbSessionCreator))
 
         logger.debug("Started")
 
