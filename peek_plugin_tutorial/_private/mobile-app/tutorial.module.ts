@@ -9,13 +9,20 @@ import {PeekModuleFactory} from "@synerty/peek-web-ns/index.web";
 import {TutorialComponent} from "./tutorial.component";
 
 // Import the required classes from VortexJS
-import {TupleOfflineStorageNameService, TupleOfflineStorageService} from "@synerty/vortexjs";
+import {
+    TupleOfflineStorageNameService,
+    TupleOfflineStorageService
+} from "@synerty/vortexjs";
 
 // Import the names we need for the
 import {tutorialTupleOfflineServiceName} from "@peek/peek_plugin_tutorial/_private";
 
 // Import the required classes from VortexJS
-import {TupleDataObservableNameService, TupleDataObserverService, TupleDataOfflineObserverService} from "@synerty/vortexjs";
+import {
+    TupleDataObservableNameService,
+    TupleDataObserverService,
+    TupleDataOfflineObserverService
+} from "@synerty/vortexjs";
 
 // Import the names we need for the
 import {tutorialObservableName, tutorialFilt} from "@peek/peek_plugin_tutorial/_private";
@@ -53,16 +60,15 @@ export const pluginRoutes: Routes = [
     exports: [],
     providers: [
         TupleOfflineStorageService, {
-        provide: TupleOfflineStorageNameService,
-        useFactory:tupleOfflineStorageNameServiceFactory
+            provide: TupleOfflineStorageNameService,
+            useFactory: tupleOfflineStorageNameServiceFactory
         },
         TupleDataObserverService, TupleDataOfflineObserverService, {
-        provide: TupleDataObservableNameService,
-        useFactory: tupleDataObservableNameServiceFactory
+            provide: TupleDataObservableNameService,
+            useFactory: tupleDataObservableNameServiceFactory
         },
     ],
     declarations: [TutorialComponent]
 })
-export class TutorialModule
-{
+export class TutorialModule {
 }
