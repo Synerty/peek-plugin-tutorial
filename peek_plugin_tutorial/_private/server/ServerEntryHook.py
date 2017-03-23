@@ -8,6 +8,8 @@ from peek_plugin_base.server.PluginServerStorageEntryHookABC import PluginServer
 from peek_plugin_tutorial._private.tuples import loadPrivateTuples
 from peek_plugin_tutorial.tuples import loadPublicTuples
 
+from .admin_backend import makeAdminBackendHandlers
+
 logger = logging.getLogger(__name__)
 
 
@@ -61,6 +63,8 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         session.commit()
 
         session.close()
+
+        self._loadedObjects.extend(makeAdminBackendHandlers(self.dbSessionCreator))
 
         logger.debug("Started")
 

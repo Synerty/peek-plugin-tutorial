@@ -1,6 +1,7 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
+import {EditStringIntComponent} from "./edit-string-int-table/edit.component";
 
 // Import our components
 import {TutorialComponent} from "./tutorial.component";
@@ -21,7 +22,7 @@ export const pluginRoutes: Routes = [
         RouterModule.forChild(pluginRoutes)],
     exports: [],
     providers: [],
-    declarations: [TutorialComponent]
+    declarations: [TutorialComponent, EditStringIntComponent]
 })
 export class TutorialModule {
 
