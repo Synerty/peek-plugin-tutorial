@@ -2,6 +2,8 @@ import logging
 
 from peek_plugin_base.client.PluginClientEntryHookABC import PluginClientEntryHookABC
 
+from .DeviceTupleDataObservableProxy import makeDeviceTupleDataObservableProxy
+
 logger = logging.getLogger(__name__)
 
 
@@ -30,6 +32,9 @@ class ClientEntryHook(PluginClientEntryHookABC):
         Place any custom initialiastion steps here.
 
         """
+
+        self._loadedObjects.append(makeDeviceTupleDataObservableProxy())
+
         logger.debug("Started")
 
     def stop(self):

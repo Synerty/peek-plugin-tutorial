@@ -10,6 +10,8 @@ from peek_plugin_tutorial.tuples import loadPublicTuples
 
 from .admin_backend import makeAdminBackendHandlers
 
+from .TupleDataObservable import makeTupleDataObservableHandler
+
 logger = logging.getLogger(__name__)
 
 
@@ -65,6 +67,9 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         session.close()
 
         self._loadedObjects.extend(makeAdminBackendHandlers(self.dbSessionCreator))
+
+        tupleObservable = makeTupleDataObservableHandler(self.dbSessionCreator)
+        self._loadedObjects.append(tupleObservable)
 
         logger.debug("Started")
 

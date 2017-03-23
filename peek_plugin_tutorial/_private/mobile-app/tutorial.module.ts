@@ -14,6 +14,17 @@ import {TupleOfflineStorageNameService, TupleOfflineStorageService} from "@syner
 // Import the names we need for the
 import {tutorialTupleOfflineServiceName} from "@peek/peek_plugin_tutorial/_private";
 
+// Import the required classes from VortexJS
+import {TupleDataObservableNameService, TupleDataObserverService, TupleDataOfflineObserverService} from "@synerty/vortexjs";
+
+// Import the names we need for the
+import {tutorialObservableName, tutorialFilt} from "@peek/peek_plugin_tutorial/_private";
+
+
+export function tupleDataObservableNameServiceFactory() {
+    return new TupleDataObservableNameService(
+        tutorialObservableName, tutorialFilt);
+}
 
 export function tupleOfflineStorageNameServiceFactory() {
     return new TupleOfflineStorageNameService(tutorialTupleOfflineServiceName);
@@ -40,9 +51,14 @@ export const pluginRoutes: Routes = [
         CommonModule,
         PeekModuleFactory.RouterModule.forChild(pluginRoutes)],
     exports: [],
-    providers: [TupleOfflineStorageService, {
+    providers: [
+        TupleOfflineStorageService, {
         provide: TupleOfflineStorageNameService,
         useFactory:tupleOfflineStorageNameServiceFactory
+        },
+        TupleDataObserverService, TupleDataOfflineObserverService, {
+        provide: TupleDataObservableNameService,
+        useFactory: tupleDataObservableNameServiceFactory
         },
     ],
     declarations: [TutorialComponent]
