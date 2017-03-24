@@ -2,7 +2,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {Routes} from "@angular/router";
 
-// Import a small abstraction library to switch between NativeScript and web
+// Import a small abstraction library to switch between nativescript and web
 import {PeekModuleFactory} from "@synerty/peek-web-ns/index.web";
 
 // Import the default route component
@@ -15,7 +15,9 @@ import {
 } from "@synerty/vortexjs";
 
 // Import the names we need for the
-import {tutorialTupleOfflineServiceName} from "@peek/peek_plugin_tutorial/_private";
+import {
+    tutorialTupleOfflineServiceName
+} from "@peek/peek_plugin_tutorial/_private/PluginNames";
 
 // Import the required classes from VortexJS
 import {
@@ -25,7 +27,13 @@ import {
 } from "@synerty/vortexjs";
 
 // Import the names we need for the
-import {tutorialObservableName, tutorialFilt} from "@peek/peek_plugin_tutorial/_private";
+
+import {StringIntComponent} from "./string-int/string-int.component";
+
+import {
+    tutorialObservableName,
+    tutorialFilt
+} from "@peek/peek_plugin_tutorial/_private/PluginNames";
 
 
 export function tupleDataObservableNameServiceFactory() {
@@ -39,6 +47,10 @@ export function tupleOfflineStorageNameServiceFactory() {
 
 // Define the child routes for this plugin
 export const pluginRoutes: Routes = [
+    {
+        path: 'stringint',
+        component: StringIntComponent
+    },
     {
         path: '',
         component: TutorialComponent
@@ -68,7 +80,7 @@ export const pluginRoutes: Routes = [
             useFactory: tupleDataObservableNameServiceFactory
         },
     ],
-    declarations: [TutorialComponent]
+    declarations: [TutorialComponent, StringIntComponent]
 })
 export class TutorialModule {
 }

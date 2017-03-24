@@ -8,3 +8,5 @@ def loadStorageTuples():
     deserialized by the vortex.
 
     """
+    from . import StringIntTuple
+    StringIntTuple.__unused = False

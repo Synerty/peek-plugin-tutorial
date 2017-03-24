@@ -25,7 +25,7 @@
         "showHomeLink": true,
         "appDir": "_private/admin-app",
         "appModule": "tutorial.module#TutorialModule",
-        "moduleDir": "plugin-module"
+        "moduleDir": "plugin-module",
     },
     "client": {
     },
@@ -34,8 +34,12 @@
         "appDir": "_private/mobile-app",
         "appModule": "tutorial.module#TutorialModule",
         "assetDir": "_private/mobile-assets",
-        "icon": "/assets/peek_plugin_tutorial/icon.png"
+        "icon": "/assets/peek_plugin_tutorial/icon.png",
+        "moduleDir": "plugin-module"
     },
     "agent": {
+    },
+    "desktop": {
+        "moduleDir": "plugin-module"
     }
 }

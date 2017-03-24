@@ -4,6 +4,11 @@ from peek_plugin_base.client.PluginClientEntryHookABC import PluginClientEntryHo
 
 from .DeviceTupleDataObservableProxy import makeDeviceTupleDataObservableProxy
 
+from peek_plugin_tutorial._private.tuples import loadPrivateTuples
+from peek_plugin_tutorial.tuples import loadPublicTuples
+
+from peek_plugin_tutorial._private.storage import loadStorageTuples
+
 logger = logging.getLogger(__name__)
 
 
@@ -23,6 +28,12 @@ class ClientEntryHook(PluginClientEntryHookABC):
         Place any custom initialiastion steps here.
 
         """
+
+        loadStorageTuples()
+
+        loadPrivateTuples()
+        loadPublicTuples()
+
         logger.debug("Loaded")
 
     def start(self):
