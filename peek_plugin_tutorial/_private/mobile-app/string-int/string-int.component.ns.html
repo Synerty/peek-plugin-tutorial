@@ -1,4 +1,4 @@
-<StackLayout class="p-20" >
+<StackLayout class="p-20">
     <Button text="Back to Main" (tap)="mainClicked()"></Button>
 
     <GridLayout columns="4*, 1*" rows="auto" width="*">
@@ -8,7 +8,7 @@
 
     <ListView [items]="stringInts">
         <template let-item="item" let-i="index" let-odd="odd" let-even="even">
-            <StackLayout [class.odd]="odd" [class.even]="even" >
+            <StackLayout [class.odd]="odd" [class.even]="even">
                 <GridLayout columns="4*, 1*" rows="auto" width="*">
                     <!-- String -->
                     <Label class="h3 peek-field-data-text" row="0" col="0"
@@ -20,6 +20,9 @@
                            [text]="item.int1"></Label>
 
                 </GridLayout>
+                <Button text="Toggle Caps" (tap)="toggleUpperCicked(item)"></Button>
+                <Button text="Increment Int" (tap)="incrementCicked(item)"></Button>
+                <Button text="Decrement Int" (tap)="decrementCicked(item)"></Button>
             </StackLayout>
         </template>
     </ListView>
