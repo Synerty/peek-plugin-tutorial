@@ -13,15 +13,15 @@
         <tr *ngFor="let item of stringInts">
             <td>{{item.string1}}</td>
             <td>{{item.int1}}</td>
-            <td> <!-- BRENTON xxxxxxx add three buttons-->
+            <td>
                 <Button class="btn btn-default" (click)="toggleUpperCicked(item)">
-                    Back to Main
+                    Toggle Caps
                 </Button>
                 <Button class="btn btn-default" (click)="incrementCicked(item)">
-                    Back to Main
+                    Increment Int
                 </Button>
                 <Button class="btn btn-default" (click)="decrementCicked(item)">
-                    Back to Main
+                    Decrement Int
                 </Button>
             </td>
         </tr>
