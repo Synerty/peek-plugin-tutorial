@@ -3,16 +3,28 @@
 
     <table class="table table-striped">
         <thead>
-            <tr>
-                <th>String</th>
-                <th>Int</th>
-            </tr>
+        <tr>
+            <th>String</th>
+            <th>Int</th>
+            <th></th>
+        </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of stringInts">
-                <td>{{item.string1}}</td>
-                <td>{{item.int1}}</td>
-            </tr>
+        <tr *ngFor="let item of stringInts">
+            <td>{{item.string1}}</td>
+            <td>{{item.int1}}</td>
+            <td> <!-- BRENTON xxxxxxx add three buttons-->
+                <Button class="btn btn-default" (click)="toggleUpperCicked(item)">
+                    Back to Main
+                </Button>
+                <Button class="btn btn-default" (click)="incrementCicked(item)">
+                    Back to Main
+                </Button>
+                <Button class="btn btn-default" (click)="decrementCicked(item)">
+                    Back to Main
+                </Button>
+            </td>
+        </tr>
         </tbody>
     </table>
 </div>

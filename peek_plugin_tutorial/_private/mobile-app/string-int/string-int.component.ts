@@ -8,6 +8,15 @@ import {
     TupleSelector
 } from "@synerty/vortexjs";
 
+import {TupleActionPushService} from "@synerty/vortexjs";
+
+import {
+    AddIntValueActionTuple,
+    StringIntDecreaseActionTuple,
+    StringCapToggleActionTuple
+} from "@peek/peek_plugin_tutorial/_private";
+
+
 @Component({
     selector: 'plugin-tutorial-string-int',
     templateUrl: 'string-int.component.mweb.html',
@@ -17,11 +26,12 @@ export class StringIntComponent extends ComponentLifecycleEventEmitter {
 
     stringInts: Array<StringIntTuple> = [];
 
-    constructor(private tupleDataObserver: TupleDataObserverService,
+    constructor(private actionService: TupleActionPushService,
+                private tupleDataObserver: TupleDataObserverService,
                 private router: Router) {
         super();
 
-        // Create the TupleSelector to tell the obserbable what data we want
+        // Create the TupleSelector to tell the observable what data we want
         let selector = {};
         // Add any filters of the data here
         // selector["lookupName"] = "brownCowList";
@@ -38,6 +48,49 @@ export class StringIntComponent extends ComponentLifecycleEventEmitter {
         // This is a feature of ComponentLifecycleEventEmitter
         this.onDestroyEvent.subscribe(() => sup.unsubscribe());
 
+    }
+
+    toggleUpperCicked(item) {
+        let action = new StringCapToggleActionTuple();
+        action.stringIntId = item.id;
+        this.actionService.pushAction(action)
+            .then(() => {
+                alert('success');
+
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
+
+
+    incrementCicked(item) {
+        let action = new AddIntValueActionTuple();
+        action.stringIntId = item.id;
+        action.offset = 1;
+        this.actionService.pushAction(action)
+            .then(() => {
+                alert('success');
+
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
+
+
+    decrementCicked(item) {
+        let action = new AddIntValueActionTuple();
+        action.stringIntId = item.id;
+        action.offset = -1;
+        this.actionService.pushAction(action)
+            .then(() => {
+                alert('success');
+
+            })
+            .catch((err) => {
+                alert(err);
+            });
     }
 
     mainClicked() {
