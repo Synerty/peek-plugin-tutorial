@@ -12,7 +12,6 @@ import {TupleActionPushService} from "@synerty/vortexjs";
 
 import {
     AddIntValueActionTuple,
-    StringIntDecreaseActionTuple,
     StringCapToggleActionTuple
 } from "@peek/peek_plugin_tutorial/_private";
 
@@ -80,7 +79,7 @@ export class StringIntComponent extends ComponentLifecycleEventEmitter {
 
 
     decrementCicked(item) {
-        let action = new StringIntDecreaseActionTuple();
+        let action = new AddIntValueActionTuple();
         action.stringIntId = item.id;
         action.offset = -1;
         this.actionService.pushAction(action)

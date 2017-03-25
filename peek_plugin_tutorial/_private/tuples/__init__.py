@@ -12,8 +12,5 @@ def loadPrivateTuples():
     from . import AddIntValueActionTuple
     AddIntValueActionTuple.__unused = False
 
-    from . import StringIntDecreaseActionTuple
-    StringIntDecreaseActionTuple.__unused = False
-
     from . import StringCapToggleActionTuple
     StringCapToggleActionTuple.__unused = False

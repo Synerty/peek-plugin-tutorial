@@ -10,7 +10,6 @@ from vortex.handler.TupleDataObservableHandler import TupleDataObservableHandler
 
 from peek_plugin_tutorial._private.storage.StringIntTuple import StringIntTuple
 from peek_plugin_tutorial._private.tuples.AddIntValueActionTuple import AddIntValueActionTuple
-from peek_plugin_tutorial._private.tuples.StringIntDecreaseActionTuple import StringIntDecreaseActionTuple
 from peek_plugin_tutorial._private.tuples.StringCapToggleActionTuple import StringCapToggleActionTuple
 
 logger = logging.getLogger(__name__)
@@ -28,9 +27,6 @@ class MainController(TupleActionProcessorDelegateABC):
 
         if isinstance(tupleAction, AddIntValueActionTuple):
             return self._processAddIntValue(tupleAction)
-
-        if isinstance(tupleAction, StringIntDecreaseActionTuple):
-            return self._processIntDecreaseString(tupleAction)
 
         if isinstance(tupleAction, StringCapToggleActionTuple):
             return self._processCapToggleString(tupleAction)
@@ -71,28 +67,6 @@ class MainController(TupleActionProcessorDelegateABC):
 
     @deferToThreadWrap
     def _processAddIntValue(self, action: AddIntValueActionTuple):
-        try:
-            # Perform update using SQLALchemy
-            session = self._dbSessionCreator()
-            row = (session.query(StringIntTuple)
-                   .filter(StringIntTuple.id == action.stringIntId)
-                   .one())
-            row.int1 += action.offset
-            session.commit()
-
-            logger.debug("Int changed by %u", action.offset)
-
-            # Notify the observer of the update
-            # This tuple selector must exactly match what the UI observes
-            tupleSelector = TupleSelector(StringIntTuple.tupleName(), {})
-            self._tupleObservable.notifyOfTupleUpdate(tupleSelector)
-
-        finally:
-            # Always close the session after we create it
-            session.close()
-
-    @deferToThreadWrap
-    def _processIntDecreaseString(self, action: StringIntDecreaseActionTuple):
         try:
             # Perform update using SQLALchemy
             session = self._dbSessionCreator()
