@@ -35,6 +35,23 @@ import {
     tutorialFilt
 } from "@peek/peek_plugin_tutorial/_private/PluginNames";
 
+// Import the required classes from VortexJS
+import {
+    TupleActionPushNameService,
+    TupleActionPushOfflineService,
+    TupleActionPushService
+} from "@synerty/vortexjs";
+
+// Import the names we need for the
+import {
+    tutorialActionProcessorName
+} from "@peek/peek_plugin_tutorial/_private";
+
+
+export function tupleActionPushNameServiceFactory() {
+    return new TupleActionPushNameService(
+        tutorialActionProcessorName, tutorialFilt);
+}
 
 export function tupleDataObservableNameServiceFactory() {
     return new TupleDataObservableNameService(
@@ -71,6 +88,10 @@ export const pluginRoutes: Routes = [
         PeekModuleFactory.RouterModule.forChild(pluginRoutes)],
     exports: [],
     providers: [
+        TupleActionPushOfflineService, TupleActionPushService, {
+            provide: TupleActionPushNameService,
+            useFactory: tupleActionPushNameServiceFactory
+        },
         TupleOfflineStorageService, {
             provide: TupleOfflineStorageNameService,
             useFactory: tupleOfflineStorageNameServiceFactory

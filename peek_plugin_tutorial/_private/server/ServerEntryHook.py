@@ -3,7 +3,8 @@ import logging
 from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHookABC
 
 from peek_plugin_tutorial._private.storage import DeclarativeBase, loadStorageTuples
-from peek_plugin_base.server.PluginServerStorageEntryHookABC import PluginServerStorageEntryHookABC
+from peek_plugin_base.server.PluginServerStorageEntryHookABC import \
+    PluginServerStorageEntryHookABC
 
 from peek_plugin_tutorial._private.tuples import loadPrivateTuples
 from peek_plugin_tutorial.tuples import loadPublicTuples
@@ -11,6 +12,9 @@ from peek_plugin_tutorial.tuples import loadPublicTuples
 from .admin_backend import makeAdminBackendHandlers
 
 from .TupleDataObservable import makeTupleDataObservableHandler
+
+from .TupleActionProcessor import makeTupleActionProcessorHandler
+from .controller.MainController import MainController
 
 logger = logging.getLogger(__name__)
 
@@ -71,6 +75,13 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
 
         self._loadedObjects.extend(
             makeAdminBackendHandlers(tupleObservable, self.dbSessionCreator))
+
+        mainController = MainController(
+            dbSessionCreator=self.dbSessionCreator,
+            tupleObservable=tupleObservable)
+
+        self._loadedObjects.append(mainController)
+        self._loadedObjects.append(makeTupleActionProcessorHandler(mainController))
 
         logger.debug("Started")
 
