@@ -30,7 +30,7 @@ class MainController(TupleActionProcessorDelegateABC):
             return self._processAddIntValue(tupleAction)
 
         if isinstance(tupleAction, StringIntDecreaseActionTuple):
-            return self._processIncrease(tupleAction)
+            return self._processIntDecreaseString(tupleAction)
 
         if isinstance(tupleAction, StringCapToggleActionTuple):
             return self._processCapToggleString(tupleAction)
@@ -80,7 +80,7 @@ class MainController(TupleActionProcessorDelegateABC):
             row.int1 += action.offset
             session.commit()
 
-            logger.debug("Incremented by %s" + action.offset)
+            logger.debug("Int changed by %u", action.offset)
 
             # Notify the observer of the update
             # This tuple selector must exactly match what the UI observes
@@ -102,7 +102,7 @@ class MainController(TupleActionProcessorDelegateABC):
             row.int1 += action.offset
             session.commit()
 
-            logger.debug("Decrease by %s" + action.offset)
+            logger.debug("Int changed by %u", action.offset)
 
             # Notify the observer of the update
             # This tuple selector must exactly match what the UI observes

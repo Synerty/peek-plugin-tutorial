@@ -80,7 +80,7 @@ export class StringIntComponent extends ComponentLifecycleEventEmitter {
 
 
     decrementCicked(item) {
-        let action = new AddIntValueActionTuple();
+        let action = new StringIntDecreaseActionTuple();
         action.stringIntId = item.id;
         action.offset = -1;
         this.actionService.pushAction(action)

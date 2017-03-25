@@ -9,3 +9,4 @@ class AddIntValueActionTuple(TupleActionABC):
     __tupleType__ = tutorialTuplePrefix + "AddIntValueActionTuple"
 
     stringIntId = TupleField()
+    offset = TupleField()
