@@ -2,7 +2,7 @@
     "plugin": {
         "title": "Tutorial Plugin",
         "packageName": "peek_plugin_tutorial",
-    "version":"0.0.5",
+    "version":"0.0.6",
         "buildNumber": "#PLUGIN_BUILD#",
         "buildDate": "#BUILD_DATE#",
         "creator": "Synerty Pty Ltd",
