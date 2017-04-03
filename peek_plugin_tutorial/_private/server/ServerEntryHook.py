@@ -14,6 +14,8 @@ from .TupleDataObservable import makeTupleDataObservableHandler
 from .TupleActionProcessor import makeTupleActionProcessorHandler
 from .controller.MainController import MainController
 
+from .admin_backend import makeAdminBackendHandlers
+
 logger = logging.getLogger(__name__)
 
 
@@ -49,6 +51,8 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         Place any custom initialiastion steps here.
 
         """
+
+        self._loadedObjects.extend(makeAdminBackendHandlers(self.dbSessionCreator))
 
         tupleObservable = makeTupleDataObservableHandler(self.dbSessionCreator)
         self._loadedObjects.append(tupleObservable)
