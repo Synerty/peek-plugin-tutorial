@@ -9,8 +9,6 @@ from peek_plugin_base.server.PluginServerStorageEntryHookABC import \
 from peek_plugin_tutorial._private.tuples import loadPrivateTuples
 from peek_plugin_tutorial.tuples import loadPublicTuples
 
-from .admin_backend import makeAdminBackendHandlers
-
 from .TupleDataObservable import makeTupleDataObservableHandler
 
 from .TupleActionProcessor import makeTupleActionProcessorHandler
@@ -45,7 +43,7 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         return DeclarativeBase.metadata
 
     def start(self):
-        """ Load
+        """ Start
 
         This will be called when the plugin is loaded, just after the db is migrated.
         Place any custom initialiastion steps here.
@@ -72,9 +70,6 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         session.commit()
 
         session.close()
-
-        self._loadedObjects.extend(
-            makeAdminBackendHandlers(tupleObservable, self.dbSessionCreator))
 
         mainController = MainController(
             dbSessionCreator=self.dbSessionCreator,
