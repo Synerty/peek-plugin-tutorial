@@ -5,7 +5,8 @@ import {
     TupleLoader,
     VortexService
 } from "@synerty/vortexjs";
-import {SettingPropertyTuple, tutorialFilt} from "@peek/peek_plugin_tutorial/plugin-module/_private";
+//noinspection TypeScriptCheckImport
+import {SettingPropertyTuple, tutorialFilt} from "@peek/peek_plugin_tutorial/_private";
 
 
 @Component({
