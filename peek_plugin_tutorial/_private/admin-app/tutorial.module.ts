@@ -3,6 +3,7 @@ import {FormsModule} from "@angular/forms";
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
 import {EditStringIntComponent} from "./edit-string-int-table/edit.component";
+import {EditSettingComponent} from "./edit-setting-table/edit.component";
 
 
 // Import our components
@@ -25,7 +26,7 @@ export const pluginRoutes: Routes = [
         FormsModule],
     exports: [],
     providers: [],
-    declarations: [TutorialComponent, EditStringIntComponent]
+    declarations: [TutorialComponent, EditStringIntComponent, EditSettingComponent]
 })
 export class TutorialModule {
 
