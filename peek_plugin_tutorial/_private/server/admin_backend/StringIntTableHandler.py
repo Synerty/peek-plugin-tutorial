@@ -1,8 +1,12 @@
+import logging
+
 from peek_plugin_tutorial._private.PluginNames import tutorialFilt
 from peek_plugin_tutorial._private.storage.StringIntTuple import StringIntTuple
 from vortex.TupleSelector import TupleSelector
-from vortex.handler.TupleDataObservableHandler import logger, TupleDataObservableHandler
+from vortex.handler.TupleDataObservableHandler import TupleDataObservableHandler
 from vortex.sqla_orm.OrmCrudHandler import OrmCrudHandler, OrmCrudHandlerExtension
+
+logger = logging.getLogger(__name__)
 
 # This dict matches the definition in the Admin angular app.
 filtKey = {"key": "admin.Edit.StringIntTuple"}
