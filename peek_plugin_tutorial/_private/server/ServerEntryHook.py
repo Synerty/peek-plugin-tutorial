@@ -52,28 +52,30 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
 
         """
 
-        self._loadedObjects.extend(makeAdminBackendHandlers(self.dbSessionCreator))
-
         tupleObservable = makeTupleDataObservableHandler(self.dbSessionCreator)
+
+        self._loadedObjects.extend(
+            makeAdminBackendHandlers(tupleObservable, self.dbSessionCreator))
+
         self._loadedObjects.append(tupleObservable)
 
-        session = self.dbSessionCreator()
-
+        # session = self.dbSessionCreator()
+        #
         # This will retrieve all the settings
-        from peek_plugin_tutorial._private.storage.Setting import globalSetting
-        allSettings = globalSetting(session)
-        logger.debug(allSettings)
-
+        # from peek_plugin_tutorial._private.storage.Setting import globalSetting
+        # allSettings = globalSetting(session)
+        # logger.debug(allSettings)
+        #
         # This will retrieve the value of property1
-        from peek_plugin_tutorial._private.storage.Setting import PROPERTY1
-        value1 = globalSetting(session, key=PROPERTY1)
-        logger.debug("value1 = %s" % value1)
-
+        # from peek_plugin_tutorial._private.storage.Setting import PROPERTY1
+        # value1 = globalSetting(session, key=PROPERTY1)
+        # logger.debug("value1 = %s" % value1)
+        #
         # This will set property1
-        globalSetting(session, key=PROPERTY1, value="new value 1")
-        session.commit()
-
-        session.close()
+        # globalSetting(session, key=PROPERTY1, value="new value 1")
+        # session.commit()
+        #
+        # session.close()
 
         mainController = MainController(
             dbSessionCreator=self.dbSessionCreator,
