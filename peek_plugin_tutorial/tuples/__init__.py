@@ -6,3 +6,6 @@ def loadPublicTuples():
     serialised data.
 
     """
+
+    from . import DoSomethingTuple
+    DoSomethingTuple.__unused = False
