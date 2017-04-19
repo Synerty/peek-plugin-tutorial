@@ -86,3 +86,6 @@ class MainController(TupleActionProcessorDelegateABC):
         finally:
             # Always close the session after we create it
             session.close()
+
+    def agentNotifiedOfUpdate(self, updateStr):
+        logger.debug("Agent said : %s", updateStr)

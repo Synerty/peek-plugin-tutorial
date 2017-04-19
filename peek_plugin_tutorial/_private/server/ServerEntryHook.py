@@ -16,6 +16,10 @@ from .controller.MainController import MainController
 
 from .admin_backend import makeAdminBackendHandlers
 
+from .agent_handlers.RpcForAgent import RpcForAgent
+
+from .ServerToAgentRpcCallExample import ServerToAgentRpcCallExample
+
 logger = logging.getLogger(__name__)
 
 
@@ -83,6 +87,13 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
 
         self._loadedObjects.append(mainController)
         self._loadedObjects.append(makeTupleActionProcessorHandler(mainController))
+
+        # Initialise the RpcForAgent
+        self._loadedObjects.extend(RpcForAgent(mainController, self.dbSessionCreator)
+                                   .makeHandlers())
+
+        # Initialise and start the RPC for Server
+        self._loadedObjects.append(ServerToAgentRpcCallExample().start())
 
         logger.debug("Started")
 
