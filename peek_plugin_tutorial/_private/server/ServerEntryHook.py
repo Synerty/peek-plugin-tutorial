@@ -89,7 +89,7 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         self._loadedObjects.append(makeTupleActionProcessorHandler(mainController))
 
         # Initialise the RpcForAgent
-        self._loadedObjects.append(RpcForAgent(mainController, self.dbSessionCreator)
+        self._loadedObjects.extend(RpcForAgent(mainController, self.dbSessionCreator)
                                    .makeHandlers())
 
         # Initialise and start the RPC for Server

@@ -13,7 +13,7 @@ class ServerToAgentRpcCallExample:
         # kickoff the example
         # Tell the reactor to start it in 1 second, we shouldn't do things like this in
         # the plugins start method.
-        reactor.callLater(1, self.run)
+        reactor.callLater(20, self.run)
 
         return self
 

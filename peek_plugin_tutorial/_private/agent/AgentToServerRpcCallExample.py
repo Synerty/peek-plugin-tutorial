@@ -14,7 +14,7 @@ class AgentToServerRpcCallExample:
         # kickoff the example
         # Tell the reactor to start it in 1 second, we shouldn't do things like this in
         # the plugins start method.
-        reactor.callLater(1, self.runWithInlineCallback)
+        reactor.callLater(5, self.runWithInlineCallback)
 
         # Return self, to make it simpler for the AgentEntryHook
         return self

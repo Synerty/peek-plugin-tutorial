@@ -39,7 +39,7 @@ class AgentEntryHook(PluginAgentEntryHookABC):
         self._loadedObjects.append(AgentToServerRpcCallExample().start())
 
         # Initialise and start the RPC for Server
-        self._loadedObjects.append(RpcForServer().makeHandlers())
+        self._loadedObjects.extend(RpcForServer().makeHandlers())
 
         logger.debug("Started")
 
