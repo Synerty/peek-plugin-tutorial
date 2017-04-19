@@ -70,10 +70,7 @@ export const pluginRoutes: Routes = [
     },
     {
         path: '',
-        component: TutorialComponent
-    },
-    {
-        path: '**',
+        pathMatch: 'full',
         component: TutorialComponent
     }
 
