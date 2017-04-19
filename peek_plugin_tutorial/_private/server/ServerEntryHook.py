@@ -22,6 +22,8 @@ from .ServerToAgentRpcCallExample import ServerToAgentRpcCallExample
 
 from .TutorialApi import TutorialApi
 
+from .ExampleUseTaskApi import ExampleUseTaskApi
+
 logger = logging.getLogger(__name__)
 
 
@@ -102,6 +104,15 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         # Initialise the API object that will be shared with other plugins
         self._api = TutorialApi(mainController)
         self._loadedObjects.append(self._api)
+
+        # Get a reference for the Active Task
+        activeTaskApi = self.platform.getOtherPluginApi("peek_plugin_active_task")
+        assert isinstance(activeTaskApi, ActiveTaskApiABC), "Wrong activeTaskApi"
+
+        # Initialise the example code that will send the test task
+        self._loadedObjects.append(
+            ExampleUseTaskApi(mainController, activeTaskApi).start()
+        )
 
         logger.debug("Started")
 
