@@ -25,7 +25,7 @@ class ExampleUseTaskApi(TutorialApiABC):
         # First, create the task
         newTask = NewTask(
             uniqueId=str(datetime.utcnow()),
-            userId="bford",  # <----- Set to your user id
+            userId="John Deed (N25)",  # <----- Set to your user id
             title="A task from tutorial plugin",
             description="Tutorials task description",
             routePath="/peek_plugin_tutorial",
