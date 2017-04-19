@@ -1,5 +1,6 @@
 import logging
 
+from peek_plugin_active_task.server.ActiveTaskApiABC import ActiveTaskApiABC
 from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHookABC
 
 from peek_plugin_tutorial._private.storage import DeclarativeBase, loadStorageTuples
@@ -20,6 +21,10 @@ from .agent_handlers.RpcForAgent import RpcForAgent
 
 from .ServerToAgentRpcCallExample import ServerToAgentRpcCallExample
 
+from .TutorialApi import TutorialApi
+
+from .ExampleUseTaskApi import ExampleUseTaskApi
+
 logger = logging.getLogger(__name__)
 
 
@@ -31,6 +36,8 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
 
         #: Loaded Objects, This is a list of all objects created when we start
         self._loadedObjects = []
+
+        self._api = None
 
     def load(self) -> None:
         """ Load
@@ -95,6 +102,19 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         # Initialise and start the RPC for Server
         self._loadedObjects.append(ServerToAgentRpcCallExample().start())
 
+        # Initialise the API object that will be shared with other plugins
+        self._api = TutorialApi(mainController)
+        self._loadedObjects.append(self._api)
+
+        # Get a reference for the Active Task
+        activeTaskApi = self.platform.getOtherPluginApi("peek_plugin_active_task")
+        assert isinstance(activeTaskApi, ActiveTaskApiABC), "Wrong activeTaskApi"
+
+        # Initialise the example code that will send the test task
+        self._loadedObjects.append(
+            ExampleUseTaskApi(mainController, activeTaskApi).start()
+        )
+
         logger.debug("Started")
 
     def stop(self):
@@ -107,6 +127,8 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         while self._loadedObjects:
             self._loadedObjects.pop().shutdown()
 
+        self._api = None
+
         logger.debug("Stopped")
 
     def unload(self):
@@ -117,3 +139,12 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
 
         """
         logger.debug("Unloaded")
+
+    @property
+    def publishedServerApi(self) -> object:
+        """ Published Server API
+    
+        :return  class that implements the API that can be used by other Plugins on this
+        platform service.
+        """
+        return self._api
