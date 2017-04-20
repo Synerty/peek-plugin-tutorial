@@ -6,12 +6,11 @@ from twisted.internet.defer import inlineCallbacks
 
 from peek_plugin_active_task.server.ActiveTaskApiABC import ActiveTaskApiABC, NewTask
 from peek_plugin_tutorial._private.server.controller.MainController import MainController
-from peek_plugin_tutorial.server.TutorialApiABC import TutorialApiABC
 
 logger = logging.getLogger(__name__)
 
 
-class ExampleUseTaskApi(TutorialApiABC):
+class ExampleUseTaskApi:
     def __init__(self, mainController: MainController, activeTaskApi: ActiveTaskApiABC):
         self._mainController = mainController
         self._activeTaskApi = activeTaskApi
@@ -25,7 +24,7 @@ class ExampleUseTaskApi(TutorialApiABC):
         # First, create the task
         newTask = NewTask(
             uniqueId=str(datetime.utcnow()),
-            userId="John Deed (N25)",  # <----- Set to your user id
+            userId="N25",  # <----- Set to your user id
             title="A task from tutorial plugin",
             description="Tutorials task description",
             routePath="/peek_plugin_tutorial",
