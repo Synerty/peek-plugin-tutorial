@@ -2,6 +2,7 @@ import logging
 
 from peek_plugin_base.agent.PluginAgentEntryHookABC import PluginAgentEntryHookABC
 
+from peek_plugin_tutorial._private.storage.DeclarativeBase import loadStorageTuples
 from peek_plugin_tutorial._private.tuples import loadPrivateTuples
 from peek_plugin_tutorial.tuples import loadPublicTuples
 
@@ -28,7 +29,7 @@ class AgentEntryHook(PluginAgentEntryHookABC):
         Place any custom initialiastion steps here.
 
         """
-
+        loadStorageTuples()
         loadPrivateTuples()
         loadPublicTuples()
 

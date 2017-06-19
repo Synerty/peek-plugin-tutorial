@@ -7,7 +7,7 @@ from .DeviceTupleDataObservableProxy import makeDeviceTupleDataObservableProxy
 from peek_plugin_tutorial._private.tuples import loadPrivateTuples
 from peek_plugin_tutorial.tuples import loadPublicTuples
 
-from peek_plugin_tutorial._private.storage import loadStorageTuples
+from peek_plugin_tutorial._private.storage.DeclarativeBase import loadStorageTuples
 
 from .DeviceTupleProcessorActionProxy import makeTupleActionProcessorProxy
 

@@ -3,7 +3,9 @@ import logging
 from peek_plugin_active_task.server.ActiveTaskApiABC import ActiveTaskApiABC
 from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHookABC
 
-from peek_plugin_tutorial._private.storage import DeclarativeBase, loadStorageTuples
+from peek_plugin_tutorial._private.storage import DeclarativeBase
+from peek_plugin_tutorial._private.storage.DeclarativeBase import loadStorageTuples
+
 from peek_plugin_base.server.PluginServerStorageEntryHookABC import \
     PluginServerStorageEntryHookABC
 
