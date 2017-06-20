@@ -82,7 +82,10 @@ export const pluginRoutes: Routes = [
 @NgModule({
     imports: [
         CommonModule,
-        PeekModuleFactory.RouterModule.forChild(pluginRoutes)],
+        PeekModuleFactory.RouterModule,
+        PeekModuleFactory.RouterModule.forChild(pluginRoutes),
+        ...PeekModuleFactory.FormsModules,
+    ],
     exports: [],
     providers: [
         TupleActionPushOfflineService, TupleActionPushService, {

@@ -23,7 +23,8 @@ export const pluginRoutes: Routes = [
     imports: [
         CommonModule,
         RouterModule.forChild(pluginRoutes),
-        FormsModule],
+        FormsModule
+    ],
     exports: [],
     providers: [],
     declarations: [TutorialComponent, EditStringIntComponent, EditSettingComponent]
