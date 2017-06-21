@@ -29,9 +29,7 @@ class StringIntTupleProvider(TuplesProviderABC):
             )
 
             # Create the vortex message
-            msg = Payload(filt, tuples=tasks).toVortexMsg()
+            return Payload(filt, tuples=tasks).toVortexMsg()
 
         finally:
             session.close()
-
-        return msg
