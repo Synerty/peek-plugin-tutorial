@@ -21,6 +21,7 @@ export class EditStringIntComponent extends ComponentLifecycleEventEmitter {
     };
 
     items: StringIntTuple[] = [];
+    itemsToDelete: StringIntTuple[] = [];
 
     loader: TupleLoader;
 
@@ -28,20 +29,46 @@ export class EditStringIntComponent extends ComponentLifecycleEventEmitter {
         super();
 
         this.loader = vortexService.createTupleLoader(this,
-            () => extend({}, this.filt, tutorialFilt));
+            () => {
+                let filt = extend({}, this.filt, tutorialFilt);
+                // If we wanted to filter the data we get, we could add this
+                // filt["lookupName"] = 'lookupType';
+                return filt;
+            });
 
         this.loader.observable
-            .subscribe((tuples:StringIntTuple[]) => this.items = tuples);
+            .subscribe((tuples:StringIntTuple[]) => {
+                this.items = tuples;
+                this.itemsToDelete = [];
+            });
     }
 
     addRow() {
-        this.items.push(new StringIntTuple());
+        let t = new StringIntTuple();
+        // Add any values needed for this list here, EG, for a lookup list you might add:
+        // t.lookupName = this.lookupName;
+        this.items.push(t);
     }
 
     removeRow(item) {
-        if (confirm("Delete Row? All unsaved changes will be lost.")) {
-            this.loader.del([item]);
+        if (item.id != null)
+            this.itemsToDelete.push(item);
+
+        let index: number = this.items.indexOf(item);
+        if (index !== -1) {
+            this.items.splice(index, 1);
         }
+    }
+
+    save() {
+        let itemsToDelete = this.itemsToDelete;
+
+        this.loader.save(this.items)
+            .then(() => {
+                if (itemsToDelete.length != 0) {
+                    return this.loader.del(itemsToDelete);
+                }
+            });
     }
 
 }

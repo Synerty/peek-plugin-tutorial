@@ -1,4 +1,19 @@
 <div class="panel panel-default">
+    <div class="panel-heading">Edit String Ints
+        <div class="btn-toolbar pull-right">
+            <div class="btn-group">
+                <div class="btn btn-default btn-sm" (click)='save()'>
+                    Save
+                </div>
+                <div class="btn btn-default btn-sm" (click)='loader.load()'>
+                    Reset
+                </div>
+                <div class="btn btn-default btn-sm" (click)='addRow()'>
+                    Add
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="panel-body">
         <table class="table">
             <tr>
@@ -24,18 +39,5 @@
                 </td>
             </tr>
         </table>
-        <div class="btn-toolbar">
-            <div class="btn-group">
-                <div class="btn btn-default" (click)='loader.save(items)'>
-                    Save
-                </div>
-                <div class="btn btn-default" (click)='loader.load()'>
-                    Reset
-                </div>
-                <div class="btn btn-default" (click)='addRow()'>
-                    Add
-                </div>
-            </div>
-        </div>
     </div>
 </div>
