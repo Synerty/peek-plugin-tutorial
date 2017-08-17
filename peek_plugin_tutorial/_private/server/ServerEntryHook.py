@@ -1,6 +1,6 @@
 import logging
 
-from peek_plugin_active_task.server.ActiveTaskApiABC import ActiveTaskApiABC
+from peek_plugin_inbox.server.InboxApiABC import InboxApiABC
 from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHookABC
 
 from peek_plugin_tutorial._private.storage import DeclarativeBase
@@ -109,8 +109,8 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         self._loadedObjects.append(self._api)
 
         # Get a reference for the Active Task
-        activeTaskApi = self.platform.getOtherPluginApi("peek_plugin_active_task")
-        assert isinstance(activeTaskApi, ActiveTaskApiABC), "Wrong activeTaskApi"
+        activeTaskApi = self.platform.getOtherPluginApi("peek_plugin_inbox")
+        assert isinstance(activeTaskApi, InboxApiABC), "Wrong activeTaskApi"
 
         # Initialise the example code that will send the test task
         self._loadedObjects.append(
