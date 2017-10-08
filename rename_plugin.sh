@@ -36,14 +36,14 @@ function replace {
 }
 
 # RENAME THE PLUGIN
-replace "_noop"  "_data_dms"
-replace "-noop" "-data-dms"
+replace "_tutorial"  "_data_dms"
+replace "-tutorial" "-data-dms"
 
-replace "_NOOP" "_DATA_DMS"
-replace "-NOOP" "-DATA-DMS"
+replace "_TUTORIAL" "_DATA_DMS"
+replace "-TUTORIAL" "-DATA-DMS"
 
-replace "Noop" "DataDms"
-replace "noop" "dataDms"
+replace "Tutorial" "DataDms"
+replace "tutorial" "dataDms"
 
 # RENAME THE STRING INT OBJECT
 replace "_string_int"  "_thing_one"
