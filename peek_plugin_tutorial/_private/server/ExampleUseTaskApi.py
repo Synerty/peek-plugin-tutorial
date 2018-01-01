@@ -1,6 +1,7 @@
 import logging
 from datetime import datetime
 
+import pytz
 from twisted.internet import reactor
 from twisted.internet.defer import inlineCallbacks
 
@@ -23,7 +24,7 @@ class ExampleUseTaskApi:
     def sendTask(self):
         # First, create the task
         newTask = NewTask(
-            uniqueId=str(datetime.utcnow()),
+            uniqueId=str(datetime.now(pytz.utc)),
             userId="N25",  # <----- Set to your user id
             title="A task from tutorial plugin",
             description="Tutorials task description",
