@@ -12,6 +12,7 @@ from peek_plugin_tutorial._private.storage.StringIntTuple import StringIntTuple
 from peek_plugin_tutorial._private.tuples.AddIntValueActionTuple import AddIntValueActionTuple
 from peek_plugin_tutorial._private.tuples.StringCapToggleActionTuple import StringCapToggleActionTuple
 
+from vortex.DeferUtil import deferToThreadWrapWithLogger
 logger = logging.getLogger(__name__)
 
 
@@ -33,7 +34,7 @@ class MainController(TupleActionProcessorDelegateABC):
 
         raise NotImplementedError(tupleAction.tupleName())
 
-    @deferToThreadWrap
+    @deferToThreadWrapWithLogger(logger)
     def _processCapToggleString(self, action: StringCapToggleActionTuple):
         try:
             # Perform update using SQLALchemy
@@ -65,7 +66,7 @@ class MainController(TupleActionProcessorDelegateABC):
             # Always close the session after we create it
             session.close()
 
-    @deferToThreadWrap
+    @deferToThreadWrapWithLogger(logger)
     def _processAddIntValue(self, action: AddIntValueActionTuple):
         try:
             # Perform update using SQLALchemy
