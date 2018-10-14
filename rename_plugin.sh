@@ -37,7 +37,10 @@ function replace {
 
 # RENAME THE PLUGIN
 replace "_tutorial"  "_data_dms"
-replace "-tutorial" "-data-dms"
+replace "tutorial_" "data_dms_"
+
+replace "-tutorial"  "-data-dms"
+replace "tutorial-" "data-dms-"
 
 replace "_TUTORIAL" "_DATA_DMS"
 replace "-TUTORIAL" "-DATA-DMS"
@@ -47,7 +50,10 @@ replace "tutorial" "dataDms"
 
 # RENAME THE STRING INT OBJECT
 replace "_string_int"  "_thing_one"
+replace "string_int_"  "thing_one_"
+
 replace "-string-int" "-thing-one"
+replace "string-int-" "thing-one-"
 
 replace "STRING_INT" "THING_ONE"
 replace "STRING-INT" "THING-ONE"
