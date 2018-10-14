@@ -42,34 +42,47 @@ echo "Setting version to $VER"
 # Update the setup.py
 sed -i "s;^package_version.*=.*;package_version = '${VER}';"  setup.py
 
-# Update the package version
-sed -i "s;.*version.*;__version__ = '${VER}';" ${PY_PACKAGE}/__init__.py
+function updateFileVers {
+    VER_FILES=""
+    VER_FILES="${VER_FILES} ${PY_PACKAGE}/__init__.py"
+    VER_FILES="${VER_FILES} ${PY_PACKAGE}/plugin_package.json"
 
-# Update the plugin_package.json
-# "version": "#PLUGIN_VER#",
-sed -i 's;.*"version".*:.*".*;    "version":"'${VER}'",;' ${PY_PACKAGE}/plugin_package.json
-
-# Reset the commit, we don't want versions in the commit
+    for file in ${VER_FILES}
+    do
+        sed -i "s/###PEEKVER###/${VER}/g" $file
+        sed -i "s/111.111.111/${VER}/g" $file
+    done
+}
 
 if [ $HAS_GIT ]; then
-    git commit -a -m "Updated to version ${VER}"
+    # Upload to test pypi
+    if [[ ${VER} == *"dev"* ]]; then
+        updateFileVers
+        python setup.py  sdist --format=gztar
+        git reset --hard
 
-    git tag ${VER}
-    git push
-    git push --tags
+    else
+        # Commit the version number to setup.py
+        # This is needed for setup develop
+        git commit -a -m "Updated to version ${VER}"
+
+        # Apply the version to the other files
+        updateFileVers
+
+        # Create the package and upload to pypi
+        python setup.py sdist --format=gztar upload
+
+        # Reset all the other versions, except setup.py
+        git reset --hard
+
+        # Tag the release
+        git tag ${VER}
+        git push
+        git push --tags
+    fi
 fi
 
-#------------------------------------------------------------------------------
-# Upload to test pypi
-PIPY_ALIAS="${2-$PYPI_PUBLISH}"
 
-if [ -n "${PIPY_ALIAS}" ]; then
-    echo "Pushing to pypi index server PIPY_ALIAS"
-    python setup.py sdist upload -r $PYPI_PUBLISH
-else
-    echo "Not publishing to any pypi indexes"
-    python setup.py sdist
-fi
 
 #------------------------------------------------------------------------------
 # Copy to local release dir if it exists
