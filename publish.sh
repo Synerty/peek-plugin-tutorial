@@ -56,30 +56,23 @@ function updateFileVers {
 
 if [ $HAS_GIT ]; then
     # Upload to test pypi
-    if [[ ${VER} == *"dev"* ]]; then
-        updateFileVers
-        python setup.py  sdist --format=gztar
-        git reset --hard
+    # Commit the version number to setup.py
+    # This is needed for setup develop
+    git commit -a -m "Updated to version ${VER}"
 
-    else
-        # Commit the version number to setup.py
-        # This is needed for setup develop
-        git commit -a -m "Updated to version ${VER}"
+    # Apply the version to the other files
+    updateFileVers
 
-        # Apply the version to the other files
-        updateFileVers
+    # Create the package and upload to pypi
+    python setup.py sdist --format=gztar upload
 
-        # Create the package and upload to pypi
-        python setup.py sdist --format=gztar upload
+    # Reset all the other versions, except setup.py
+    git reset --hard
 
-        # Reset all the other versions, except setup.py
-        git reset --hard
-
-        # Tag the release
-        git tag ${VER}
-        git push
-        git push --tags
-    fi
+    # Tag the release
+    git tag ${VER}
+    git push
+    git push --tags
 fi
 
 
