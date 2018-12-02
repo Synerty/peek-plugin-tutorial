@@ -1,3 +1,4 @@
+tutorialPluginName = "peek_plugin_tutorial"
 tutorialFilt = {"plugin": "peek_plugin_tutorial"}
 tutorialTuplePrefix = "peek_plugin_tutorial."
 tutorialObservableName = "peek_plugin_tutorial"
