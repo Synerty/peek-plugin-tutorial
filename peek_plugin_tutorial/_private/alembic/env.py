@@ -1,9 +1,8 @@
 from peek_plugin_base.storage.AlembicEnvBase import AlembicEnvBase
 
 from peek_plugin_tutorial._private.storage import DeclarativeBase
-from peek_plugin_tutorial._private.storage.DeclarativeBase import loadStorageTuples
 
-loadStorageTuples()
+DeclarativeBase.loadStorageTuples()
 
-alembicEnv = AlembicEnvBase(DeclarativeBase.DeclarativeBase.metadata)
+alembicEnv = AlembicEnvBase(DeclarativeBase.metadata)
 alembicEnv.run()

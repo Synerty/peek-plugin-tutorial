@@ -1,45 +1,63 @@
 {
-    "plugin": {
-        "title": "Tutorial Plugin",
-        "packageName": "peek_plugin_tutorial",
-        "version": "111.111.111",
-        "buildNumber": "#PLUGIN_BUILD#",
-        "buildDate": "#BUILD_DATE#",
-        "creator": "Synerty Pty Ltd",
-        "website": "www.synerty.com"
-    },
-    "requiresServices": [
-        "server",
-        "storage",
-        "admin",
-        "client",
-        "mobile",
-        "agent"
-    ],
-    "server": {
-    },
-    "storage": {
-        "alembicDir": "_private/alembic"
-    },
-    "admin": {
-        "showHomeLink": true,
-        "appDir": "_private/admin-app",
-        "appModule": "tutorial.module#TutorialModule",
-        "moduleDir": "plugin-module"
-    },
-    "client": {
-    },
-    "mobile": {
-        "showHomeLink": true,
-        "appDir": "_private/mobile-app",
-        "appModule": "tutorial.module#TutorialModule",
-        "assetDir": "_private/mobile-assets",
-        "icon": "/assets/peek_plugin_tutorial/icon.png",
-        "moduleDir": "plugin-module"
-    },
-    "agent": {
-    },
-    "desktop": {
-        "moduleDir": "plugin-module"
-    }
+  "plugin": {
+    "title": "Tutorial Plugin",
+    "packageName": "peek_plugin_tutorial",
+    "version": "0.0.0",
+    "creator": "Synerty Pty Ltd",
+    "website": "www.synerty.com"
+  },
+  "requiresServices": [
+    "doc-admin", "doc-dev", "doc-user", "server", "client", "agent", "storage", "admin", "mobile", "desktop", "worker"
+  ],
+  "doc-dev": {
+    "docDir": "doc-dev",
+    "docRst": "index.rst",
+    "hasApi": true
+  },
+  "doc-admin": {
+    "docDir": "doc-admin",
+    "docRst": "index.rst"
+  },
+  "doc-user": {
+    "docDir": "doc-user",
+    "docRst": "index.rst"
+  },
+  "server": {
+
+  },
+  "client": {
+
+  },
+  "agent": {
+
+  },
+  "storage": {
+    "alembicDir": "_private/alembic"
+  },
+  "admin": {
+    "showHomeLink": true,
+    "appDir": "_private/admin-app",
+    "appModule": "tutorial.module#TutorialModule",
+    "moduleDir": "plugin-module"
+  },
+  "mobile": {
+    "showHomeLink": true,
+    "appDir": "_private/mobile-app",
+    "appModule": "tutorial.module#TutorialModule",
+    "assetDir": "_private/mobile-assets",
+    "icon": "/assets/peek_plugin_tutorial/icon.png",
+    "moduleDir": "plugin-module"
+  },
+  "desktop": {
+    "showHomeLink": true,
+    "appDir": "_private/desktop-app",
+    "appModule": "tutorial.module#TutorialModule",
+    "assetDir": "_private/mobile-assets",
+    "icon": "/assets/peek_plugin_tutorial/icon.png",
+    "moduleDir": "plugin-module"
+  },
+  "worker": {
+
+  }
+  
 }

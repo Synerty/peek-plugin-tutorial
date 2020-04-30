@@ -11,8 +11,8 @@ logger = logging.getLogger(__name__)
 class ServerToAgentRpcCallExample:
     def start(self):
         # kickoff the example
-        # Tell the reactor to start it in 1 second, we shouldn't do things like this in
-        # the plugins start method.
+        # Tell the reactor to start it in 20 seconds, we shouldn't do things like
+        # this in the plugins start method.
         reactor.callLater(20, self.run)
 
         return self

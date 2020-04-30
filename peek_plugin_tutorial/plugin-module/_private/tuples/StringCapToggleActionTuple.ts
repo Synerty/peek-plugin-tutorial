@@ -1,9 +1,9 @@
-                                       import {addTupleType, Tuple, TupleActionABC} from "@synerty/vortexjs";
+import {addTupleType, Tuple, TupleActionABC} from "@synerty/vortexjs";
 import {tutorialTuplePrefix} from "../PluginNames";
 
 @addTupleType
 export class StringCapToggleActionTuple extends TupleActionABC {
-    static readonly tupleName = tutorialTuplePrefix + "StringCapToggleActionTuple";
+    public static readonly tupleName = tutorialTuplePrefix + "StringCapToggleActionTuple";
 
     stringIntId: number;
 

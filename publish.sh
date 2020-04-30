@@ -50,9 +50,6 @@ function updateFileVers {
     for file in ${VER_FILES}
     do
         if [ -f ${file} ]; then
-            sed -i "s/^__version__.*/__version__ = \'${VER}\'/g" ${file}
-            sed -i "s/###PEEKVER###/${VER}/g" ${file}
-            sed -i "s/111.111.111/${VER}/g" ${file}
             sed -i "s/0.0.0/${VER}/g" ${file}
         fi
     done

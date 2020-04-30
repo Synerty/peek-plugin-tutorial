@@ -9,10 +9,10 @@ from setuptools import find_packages
 #
 author = "Synerty"
 author_email = 'contact@synerty.com'
-py_package_name = "peek_plugin_tutorial"
+py_package_name = "tutorial"
 pip_package_name = py_package_name.replace('_', '-')
 package_version = '0.0.0'
-description = 'Peek Plugin Tutorial - My first enhancement.'
+description = 'Peek Plugin Tutorial - My first peek plugin enhancement'
 
 download_url = 'https://bitbucket.org/synerty/%s/get/%s.zip'
 download_url %= pip_package_name, package_version
@@ -55,7 +55,7 @@ package_files = find_package_files()
 
 setup(
     name=pip_package_name,
-    packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
+    packages=find_packages(),
     package_data={'': package_files},
     install_requires=['peek-plugin-base'],
     version=package_version,

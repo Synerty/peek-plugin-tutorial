@@ -2,10 +2,9 @@ from vortex.handler.TupleDataObservableHandler import TupleDataObservableHandler
 
 from peek_plugin_tutorial._private.PluginNames import tutorialFilt
 from peek_plugin_tutorial._private.PluginNames import tutorialObservableName
-
 from .tuple_providers.StringIntTupleProvider import StringIntTupleProvider
-from peek_plugin_tutorial._private.storage.StringIntTuple import StringIntTuple
 
+from peek_plugin_tutorial._private.storage.StringIntTuple import StringIntTuple
 
 def makeTupleDataObservableHandler(ormSessionCreator):
     """" Make Tuple Data Observable Handler
@@ -23,6 +22,8 @@ def makeTupleDataObservableHandler(ormSessionCreator):
                 additionalFilt=tutorialFilt)
 
     # Register TupleProviders here
+    
     tupleObservable.addTupleProvider(StringIntTuple.tupleName(),
-                                     StringIntTupleProvider(ormSessionCreator))
+                            StringIntTupleProvider(ormSessionCreator))
+    
     return tupleObservable

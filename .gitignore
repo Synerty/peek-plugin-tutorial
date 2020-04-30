@@ -17,6 +17,7 @@ MANIFEST
 dist
 .idea
 .vscode
-
-# docs
-docs/api_autodoc
+docs/api_autoapi
+nosetests.xml
+.coverage
+htmlcov/

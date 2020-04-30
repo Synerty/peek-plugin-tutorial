@@ -8,13 +8,14 @@ import {
     TupleSelector
 } from "@synerty/vortexjs";
 
+import {TupleDataOfflineObserverService} from "@synerty/vortexjs";
+
 import {TupleActionPushService} from "@synerty/vortexjs";
 
 import {
     AddIntValueActionTuple,
     StringCapToggleActionTuple
 } from "@peek/peek_plugin_tutorial/_private";
-
 
 @Component({
     selector: 'plugin-tutorial-string-int',
@@ -25,12 +26,12 @@ export class StringIntComponent extends ComponentLifecycleEventEmitter {
 
     stringInts: Array<StringIntTuple> = [];
 
-    constructor(private actionService: TupleActionPushService,
-                private tupleDataObserver: TupleDataObserverService,
+    constructor(private tupleDataObserver: TupleDataOfflineObserverService,
+                private actionService: TupleActionPushService,
                 private router: Router) {
         super();
 
-        // Create the TupleSelector to tell the observable what data we want
+        // Create the TupleSelector to tell the obserbable what data we want
         let selector = {};
         // Add any filters of the data here
         // selector["lookupName"] = "brownCowList";
@@ -49,7 +50,7 @@ export class StringIntComponent extends ComponentLifecycleEventEmitter {
 
     }
 
-    toggleUpperCicked(item) {
+    toggleUpperClicked(item) {
         let action = new StringCapToggleActionTuple();
         action.stringIntId = item.id;
         this.actionService.pushAction(action)
@@ -62,8 +63,7 @@ export class StringIntComponent extends ComponentLifecycleEventEmitter {
             });
     }
 
-
-    incrementCicked(item) {
+    incrementClicked(item) {
         let action = new AddIntValueActionTuple();
         action.stringIntId = item.id;
         action.offset = 1;
@@ -77,8 +77,7 @@ export class StringIntComponent extends ComponentLifecycleEventEmitter {
             });
     }
 
-
-    decrementCicked(item) {
+    decrementClicked(item) {
         let action = new AddIntValueActionTuple();
         action.stringIntId = item.id;
         action.offset = -1;
