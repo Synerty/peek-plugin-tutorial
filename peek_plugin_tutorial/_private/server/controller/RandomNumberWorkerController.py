@@ -39,11 +39,14 @@ class RandomNumberWorkerController:
     def shutdown(self):
         self.stop()
 
+    @inlineCallbacks
     def _poll(self):
         # Send the tasks to the peek worker
         start = randint(1, 1000)
-        d = self._sendToWorker(start)
-        d.addErrback(vortexLogFailure, logger)
+        try:
+            result = yield self._sendToWorker(start)
+        except Exception as e:
+            logger.exception(e)
 
     @inlineCallbacks
     def _sendToWorker(self, item):

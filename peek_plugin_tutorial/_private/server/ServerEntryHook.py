@@ -41,9 +41,9 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC,
 
         #: Loaded Objects, This is a list of all objects created when we start
         self._loadedObjects = []
-        
+
         self._api = None
-        
+
 
     def load(self) -> None:
         """ Load
@@ -52,13 +52,13 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC,
         Place any custom initialiastion steps here.
 
         """
-        
+
         loadStorageTuples() # <-- Add this line
-        
-        
+
+
         loadPrivateTuples()
         loadPublicTuples()
-        
+
         logger.debug("Loaded")
 
     def start(self):
@@ -72,27 +72,27 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC,
         -   Create payload, observable and tuple action handlers.
 
         """
-        
+
         tupleObservable = makeTupleDataObservableHandler(self.dbSessionCreator)
-        
-        
+
+
         self._loadedObjects.extend(makeAdminBackendHandlers(tupleObservable, self.dbSessionCreator))
-        
+
         self._loadedObjects.append(tupleObservable)
         mainController = MainController(dbSessionCreator=self.dbSessionCreator, tupleObservable=tupleObservable)
 
         self._loadedObjects.append(mainController)
         self._loadedObjects.append(makeTupleActionProcessorHandler(mainController))
-        
-        
-        
+
+
+
         # Initialise the RpcForAgent
         self._loadedObjects.extend(RpcForAgent(mainController, self.dbSessionCreator)
                            .makeHandlers())
         # Initialise and start the RPC for Server
         self._loadedObjects.append(ServerToAgentRpcCallExample().start())
-        
-        
+
+
         # Initialise the API object that will be shared with other plugins
         self._api = TutorialApi(mainController)
         self._loadedObjects.append(self._api)
@@ -101,12 +101,12 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC,
         assert isinstance(inboxApi, InboxApiABC), "Wrong inboxApi"
         # Initialise the example code that will send the test task
         self._loadedObjects.append(ExampleUseTaskApi(mainController, inboxApi).start())
-        
-        
+
+
         randomNumberController = RandomNumberWorkerController()
         self._loadedObjects.append(randomNumberController)
         randomNumberController.start()
-        
+
         logger.debug("Started")
 
     def stop(self):
@@ -118,9 +118,9 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC,
         # Shutdown and dereference all objects we constructed when we started
         while self._loadedObjects:
             self._loadedObjects.pop().shutdown()
-        
+
         self._api = None
-        
+
         logger.debug("Stopped")
 
     def unload(self):
@@ -132,13 +132,13 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC,
         """
         logger.debug("Unloaded")
 
-    
+
     @property
     def dbMetadata(self):
         return DeclarativeBase.metadata
-    
 
-    
+
+
     @property
     def publishedServerApi(self) -> object:
         """ Published Server API
@@ -147,4 +147,4 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC,
         platform service.
         """
         return self._api
-    
+
