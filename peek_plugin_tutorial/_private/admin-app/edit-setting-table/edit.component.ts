@@ -31,7 +31,7 @@ export class EditSettingComponent extends ComponentLifecycleEventEmitter {
             () => extend({}, this.filt, tutorialFilt));
 
         this.loader.observable
-            .subscribe((tuples:SettingPropertyTuple[]) => this.items = tuples);
+            .subscribe((tuples: SettingPropertyTuple[]) => this.items = tuples);
     }
 
     saveClicked() {

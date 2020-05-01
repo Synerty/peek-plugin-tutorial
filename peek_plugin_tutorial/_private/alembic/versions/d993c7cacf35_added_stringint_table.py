@@ -1,15 +1,15 @@
-"""Added StringInt Table and Settings Table
+"""Added StringInt Table
 
 Peek Plugin Database Migration Script
 
-Revision ID: b2cc815b04ea
+Revision ID: d993c7cacf35
 Revises: 
-Create Date: 2020-04-30 23:20:37.875241
+Create Date: 2020-05-01 19:27:18.887196
 
 """
 
 # revision identifiers, used by Alembic.
-revision = 'b2cc815b04ea'
+revision = 'd993c7cacf35'
 down_revision = None
 branch_labels = None
 depends_on = None

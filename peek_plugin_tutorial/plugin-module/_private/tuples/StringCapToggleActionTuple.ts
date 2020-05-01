@@ -3,7 +3,7 @@ import {tutorialTuplePrefix} from "../PluginNames";
 
 @addTupleType
 export class StringCapToggleActionTuple extends TupleActionABC {
-    public static readonly tupleName = tutorialTuplePrefix + "StringCapToggleActionTuple";
+    static readonly tupleName = tutorialTuplePrefix + "StringCapToggleActionTuple";
 
     stringIntId: number;
 

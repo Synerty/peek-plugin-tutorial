@@ -6,7 +6,8 @@ import {
     ComponentLifecycleEventEmitter,
     TupleLoader
 } from "@synerty/vortexjs";
-import {StringIntTuple,
+import {
+    StringIntTuple,
     tutorialFilt
 } from "@peek/peek_plugin_tutorial/_private";
 
@@ -39,7 +40,7 @@ export class EditStringIntComponent extends ComponentLifecycleEventEmitter {
             });
 
         this.loader.observable
-            .subscribe((tuples:StringIntTuple[]) => {
+            .subscribe((tuples: StringIntTuple[]) => {
                 this.items = tuples;
                 this.itemsToDelete = [];
             });

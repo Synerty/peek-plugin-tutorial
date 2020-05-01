@@ -1,4 +1,5 @@
 import logging
+import pytz
 from datetime import datetime
 
 from twisted.internet import reactor
@@ -25,7 +26,7 @@ class ExampleUseTaskApi:
         # First, create the task
         newTask = NewTask(
             pluginName=tutorialPluginName,
-            uniqueId=str(datetime.utcnow()),
+            uniqueId=str(datetime.now(pytz.utc)),
             userId="1",  # <----- Set to your user id
             title="A task from tutorial plugin",
             description="Tutorials task description",
@@ -38,7 +39,6 @@ class ExampleUseTaskApi:
 
         # Now send the task via the active tasks API
         yield self._inboxApi.addTask(newTask)
-
         logger.debug("Task Sent")
 
     def shutdown(self):

@@ -29,9 +29,10 @@ export const pluginRoutes: Routes = [
     exports: [],
     providers: [],
     declarations: [
-      TutorialComponent
-      ,EditStringIntComponent, EditSettingComponent
-      ]
+        TutorialComponent,
+        EditStringIntComponent,
+        EditSettingComponent
+    ]
 })
 export class TutorialModule {
 

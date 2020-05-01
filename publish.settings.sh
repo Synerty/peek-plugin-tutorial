@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PY_PACKAGE="tutorial"
+PY_PACKAGE="peek_plugin_tutorial"
 PYPI_PUBLISH="0"
 
 GITHUB_PUSH="${GITHUB_PUSH:-1}"

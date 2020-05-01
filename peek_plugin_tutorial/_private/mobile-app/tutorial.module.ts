@@ -15,7 +15,7 @@ import {
     TupleOfflineStorageService
 } from "@synerty/vortexjs";
 
-// Import the names we need for the
+// Import the tuple names we need for the Offline Service
 import {
     tutorialTupleOfflineServiceName,
 } from "@peek/peek_plugin_tutorial/_private";
