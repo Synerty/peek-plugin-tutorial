@@ -25,18 +25,17 @@ export function tupleOfflineStorageNameServiceFactory() {
 }
 
 
-
 // Import the required classes from VortexJS
 import {
-        TupleDataObservableNameService,
-        TupleDataObserverService,
-        TupleDataOfflineObserverService
+    TupleDataObservableNameService,
+    TupleDataObserverService,
+    TupleDataOfflineObserverService
 } from "@synerty/vortexjs";
 
 // Import the names we need for the
 import {
-        tutorialObservableName,
-        tutorialFilt
+    tutorialObservableName,
+    tutorialFilt
 } from "@peek/peek_plugin_tutorial/_private";
 
 // Import the required classes from VortexJS
@@ -68,10 +67,10 @@ export function tupleActionPushNameServiceFactory() {
 export const pluginRoutes: Routes = [
     {
         path: '',
-        pathMatch:'full',
+        pathMatch: 'full',
         component: TutorialComponent
-    }
-    ,{
+    },
+    {
         path: 'stringint',
         component: StringIntComponent
     }
@@ -89,26 +88,25 @@ export const pluginRoutes: Routes = [
     ],
     exports: [],
     providers: [
-      
-      TupleOfflineStorageService,
-      {
-        provide: TupleOfflineStorageNameService,
-        useFactory:tupleOfflineStorageNameServiceFactory
-      },
-      
-      
-      TupleDataObserverService, TupleDataOfflineObserverService, {
-        provide: TupleDataObservableNameService,
-        useFactory: tupleDataObservableNameServiceFactory
-      },
-      TupleActionPushOfflineService, TupleActionPushService, {
-        provide: TupleActionPushNameService,
-        useFactory: tupleActionPushNameServiceFactory
-      },
-      
+
+        TupleOfflineStorageService,
+        {
+            provide: TupleOfflineStorageNameService,
+            useFactory: tupleOfflineStorageNameServiceFactory
+        },
+
+
+        TupleDataObserverService, TupleDataOfflineObserverService, {
+            provide: TupleDataObservableNameService,
+            useFactory: tupleDataObservableNameServiceFactory
+        },
+        TupleActionPushOfflineService, TupleActionPushService, {
+            provide: TupleActionPushNameService,
+            useFactory: tupleActionPushNameServiceFactory
+        },
+
     ],
-    declarations: [TutorialComponent , StringIntComponent ]
+    declarations: [TutorialComponent, StringIntComponent]
 })
-export class TutorialModule
-{
+export class TutorialModule {
 }

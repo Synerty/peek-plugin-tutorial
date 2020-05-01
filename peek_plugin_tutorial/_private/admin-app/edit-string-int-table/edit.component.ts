@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Ng2BalloonMsgService} from '@synerty/ng2-balloon-msg';
+import {Component, OnInit} from "@angular/core";
+import {Ng2BalloonMsgService} from "@synerty/ng2-balloon-msg";
 import {
     extend,
     VortexService,
     ComponentLifecycleEventEmitter,
     TupleLoader
-} from '@synerty/vortexjs';
+} from "@synerty/vortexjs";
 import {StringIntTuple,
     tutorialFilt
-} from '@peek/peek_plugin_tutorial/_private';
+} from "@peek/peek_plugin_tutorial/_private";
 
 
 @Component({
