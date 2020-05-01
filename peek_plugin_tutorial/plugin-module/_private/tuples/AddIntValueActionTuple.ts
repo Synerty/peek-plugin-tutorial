@@ -1,9 +1,9 @@
- import {addTupleType, Tuple, TupleActionABC} from "@synerty/vortexjs";
+import {addTupleType, Tuple, TupleActionABC} from "@synerty/vortexjs";
 import {tutorialTuplePrefix} from "../PluginNames";
 
 @addTupleType
 export class AddIntValueActionTuple extends TupleActionABC {
-    static readonly tupleName = tutorialTuplePrefix + "AddIntValueActionTuple";
+    public static readonly tupleName = tutorialTuplePrefix + "AddIntValueActionTuple";
 
     stringIntId: number;
     offset: number;

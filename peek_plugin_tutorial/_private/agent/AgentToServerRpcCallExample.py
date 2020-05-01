@@ -12,8 +12,8 @@ logger = logging.getLogger(__name__)
 class AgentToServerRpcCallExample:
     def start(self):
         # kickoff the example
-        # Tell the reactor to start it in 1 second, we shouldn't do things like this in
-        # the plugins start method.
+        # Tell the reactor to start it in 5 seconds, we shouldn't do things like
+        # this in the plugins start method.
         reactor.callLater(5, self.runWithInlineCallback)
 
         # Return self, to make it simpler for the AgentEntryHook
@@ -31,7 +31,7 @@ class AgentToServerRpcCallExample:
         Yield here, will cause the flow of code to return to the twisted.reactor
         until the deferreds callback or errback is called.
 
-        The errback will cause en exception, which we'd catch with a standard
+        The errback will cause an exception, which we'd catch with a standard
         try/except block.
 
         """

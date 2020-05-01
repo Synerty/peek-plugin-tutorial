@@ -4,7 +4,7 @@ import {tutorialTuplePrefix} from "../PluginNames";
 
 @addTupleType
 export class TutorialTuple extends Tuple {
-    public static readonly tupleName = tutorialTuplePrefix + "TutorialTuple";
+    public static readonly tupleName = tutorialTuplePrefix + 'TutorialTuple';
 
     //  Description of date1
     dict1 : {};

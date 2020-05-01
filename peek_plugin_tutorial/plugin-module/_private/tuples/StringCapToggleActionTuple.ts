@@ -1,4 +1,4 @@
-                                       import {addTupleType, Tuple, TupleActionABC} from "@synerty/vortexjs";
+import {addTupleType, Tuple, TupleActionABC} from "@synerty/vortexjs";
 import {tutorialTuplePrefix} from "../PluginNames";
 
 @addTupleType

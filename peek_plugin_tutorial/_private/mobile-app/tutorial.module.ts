@@ -8,16 +8,22 @@ import {PeekModuleFactory} from "@synerty/peek-util-web";
 // Import the default route component
 import {TutorialComponent} from "./tutorial.component";
 
+
 // Import the required classes from VortexJS
 import {
     TupleOfflineStorageNameService,
     TupleOfflineStorageService
 } from "@synerty/vortexjs";
 
-// Import the names we need for the
+// Import the tuple names we need for the Offline Service
 import {
-    tutorialTupleOfflineServiceName
-} from "@peek/peek_plugin_tutorial/_private/PluginNames";
+    tutorialTupleOfflineServiceName,
+} from "@peek/peek_plugin_tutorial/_private";
+
+export function tupleOfflineStorageNameServiceFactory() {
+    return new TupleOfflineStorageNameService(tutorialTupleOfflineServiceName);
+}
+
 
 // Import the required classes from VortexJS
 import {
@@ -27,13 +33,10 @@ import {
 } from "@synerty/vortexjs";
 
 // Import the names we need for the
-
-import {StringIntComponent} from "./string-int/string-int.component";
-
 import {
     tutorialObservableName,
     tutorialFilt
-} from "@peek/peek_plugin_tutorial/_private/PluginNames";
+} from "@peek/peek_plugin_tutorial/_private";
 
 // Import the required classes from VortexJS
 import {
@@ -47,33 +50,30 @@ import {
     tutorialActionProcessorName
 } from "@peek/peek_plugin_tutorial/_private";
 
-
-export function tupleActionPushNameServiceFactory() {
-    return new TupleActionPushNameService(
-        tutorialActionProcessorName, tutorialFilt);
-}
+import {StringIntComponent} from "./string-int/string-int.component";
 
 export function tupleDataObservableNameServiceFactory() {
     return new TupleDataObservableNameService(
         tutorialObservableName, tutorialFilt);
 }
 
-export function tupleOfflineStorageNameServiceFactory() {
-    return new TupleOfflineStorageNameService(tutorialTupleOfflineServiceName);
+export function tupleActionPushNameServiceFactory() {
+    return new TupleActionPushNameService(
+        tutorialActionProcessorName, tutorialFilt);
 }
+
 
 // Define the child routes for this plugin
 export const pluginRoutes: Routes = [
     {
-        path: 'stringint',
-        component: StringIntComponent
-    },
-    {
         path: '',
         pathMatch: 'full',
         component: TutorialComponent
+    },
+    {
+        path: 'stringint',
+        component: StringIntComponent
     }
-
 ];
 
 // Define the root module for this plugin.
@@ -84,22 +84,27 @@ export const pluginRoutes: Routes = [
         CommonModule,
         PeekModuleFactory.RouterModule,
         PeekModuleFactory.RouterModule.forChild(pluginRoutes),
-        ...PeekModuleFactory.FormsModules,
+        ...PeekModuleFactory.FormsModules
     ],
     exports: [],
     providers: [
-        TupleActionPushOfflineService, TupleActionPushService, {
-            provide: TupleActionPushNameService,
-            useFactory: tupleActionPushNameServiceFactory
-        },
-        TupleOfflineStorageService, {
+
+        TupleOfflineStorageService,
+        {
             provide: TupleOfflineStorageNameService,
             useFactory: tupleOfflineStorageNameServiceFactory
         },
+
+
         TupleDataObserverService, TupleDataOfflineObserverService, {
             provide: TupleDataObservableNameService,
             useFactory: tupleDataObservableNameServiceFactory
         },
+        TupleActionPushOfflineService, TupleActionPushService, {
+            provide: TupleActionPushNameService,
+            useFactory: tupleActionPushNameServiceFactory
+        },
+
     ],
     declarations: [TutorialComponent, StringIntComponent]
 })

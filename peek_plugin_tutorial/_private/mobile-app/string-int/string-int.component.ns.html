@@ -7,7 +7,7 @@
     </GridLayout>
 
     <ListView [items]="stringInts">
-        <ng-template let-item="item" let-i="index" let-odd="odd" let-even="even">
+        <template let-item="item" let-i="index" let-odd="odd" let-even="even">
             <StackLayout [class.odd]="odd" [class.even]="even">
                 <GridLayout columns="4*, 1*" rows="auto" width="*">
                     <!-- String -->
@@ -20,10 +20,10 @@
                            [text]="item.int1"></Label>
 
                 </GridLayout>
-                <Button text="Toggle Caps" (tap)="toggleUpperCicked(item)"></Button>
-                <Button text="Increment Int" (tap)="incrementCicked(item)"></Button>
-                <Button text="Decrement Int" (tap)="decrementCicked(item)"></Button>
+                <Button text="Toggle Caps" (tap)="toggleUpperClicked(item)"></Button>
+                <Button text="Increment Int" (tap)="incrementClicked(item)"></Button>
+                <Button text="Decrement Int" (tap)="decrementClicked(item)"></Button>
             </StackLayout>
-        </ng-template>
+        </template>
     </ListView>
 </StackLayout>

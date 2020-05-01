@@ -1,7 +1,7 @@
 import logging
 
 from twisted.internet.defer import Deferred
-from txhttputil.util.DeferUtil import deferToThreadWrap
+from vortex.DeferUtil import deferToThreadWrapWithLogger
 
 from vortex.TupleSelector import TupleSelector
 from vortex.TupleAction import TupleActionABC
@@ -9,10 +9,9 @@ from vortex.handler.TupleActionProcessor import TupleActionProcessorDelegateABC
 from vortex.handler.TupleDataObservableHandler import TupleDataObservableHandler
 
 from peek_plugin_tutorial._private.storage.StringIntTuple import StringIntTuple
-from peek_plugin_tutorial._private.tuples.AddIntValueActionTuple import AddIntValueActionTuple
 from peek_plugin_tutorial._private.tuples.StringCapToggleActionTuple import StringCapToggleActionTuple
+from peek_plugin_tutorial._private.tuples.AddIntValueActionTuple import AddIntValueActionTuple
 
-from vortex.DeferUtil import deferToThreadWrapWithLogger
 logger = logging.getLogger(__name__)
 
 
@@ -90,3 +89,4 @@ class MainController(TupleActionProcessorDelegateABC):
 
     def agentNotifiedOfUpdate(self, updateStr):
         logger.debug("Agent said : %s", updateStr)
+

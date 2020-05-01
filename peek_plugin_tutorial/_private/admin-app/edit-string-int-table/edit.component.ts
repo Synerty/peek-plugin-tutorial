@@ -6,7 +6,8 @@ import {
     ComponentLifecycleEventEmitter,
     TupleLoader
 } from "@synerty/vortexjs";
-import {StringIntTuple,
+import {
+    StringIntTuple,
     tutorialFilt
 } from "@peek/peek_plugin_tutorial/_private";
 
@@ -18,7 +19,7 @@ import {StringIntTuple,
 export class EditStringIntComponent extends ComponentLifecycleEventEmitter {
     // This must match the dict defined in the admin_backend handler
     private readonly filt = {
-        "key": "admin.Edit.StringIntTuple"
+        'key': 'admin.Edit.StringIntTuple'
     };
 
     items: StringIntTuple[] = [];
@@ -34,12 +35,12 @@ export class EditStringIntComponent extends ComponentLifecycleEventEmitter {
             () => {
                 let filt = extend({}, this.filt, tutorialFilt);
                 // If we wanted to filter the data we get, we could add this
-                // filt["lookupName"] = 'lookupType';
+                // filt['lookupName'] = 'lookupType';
                 return filt;
             });
 
         this.loader.observable
-            .subscribe((tuples:StringIntTuple[]) => {
+            .subscribe((tuples: StringIntTuple[]) => {
                 this.items = tuples;
                 this.itemsToDelete = [];
             });
@@ -71,13 +72,13 @@ export class EditStringIntComponent extends ComponentLifecycleEventEmitter {
                     return this.loader.del(itemsToDelete);
                 }
             })
-            .then(() => this.balloonMsg.showSuccess("Save Successful"))
+            .then(() => this.balloonMsg.showSuccess('Save Successful'))
             .catch(e => this.balloonMsg.showError(e));
     }
 
     resetClicked() {
         this.loader.load()
-            .then(() => this.balloonMsg.showSuccess("Reset Successful"))
+            .then(() => this.balloonMsg.showSuccess('Reset Successful'))
             .catch(e => this.balloonMsg.showError(e));
     }
 
