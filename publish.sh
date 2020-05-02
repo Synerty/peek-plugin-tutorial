@@ -94,14 +94,6 @@ if [ $HAS_GIT ]; then
       git push --tags
     fi
 
-    if [ ${GITHUB_PUSH} == "1" -a ${DEVBUILD} -eq 0 ]
-    then
-        echo "Pushing ${PIP_PACKAGE} to GitHub"
-        git remote remove github 2> /dev/null || true
-        git remote add github git@github.com:Synerty/${PIP_PACKAGE}.git
-        git push -f github master || true
-    fi
-
 fi
 
 
