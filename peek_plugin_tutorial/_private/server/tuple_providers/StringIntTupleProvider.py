@@ -32,4 +32,4 @@ class StringIntTupleProvider(TuplesProviderABC):
             return Payload(filt, tuples=tasks).makePayloadEnvelope().toVortexMsg()
 
         finally:
-            pass
+            session.close()
