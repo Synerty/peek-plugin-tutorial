@@ -33,6 +33,17 @@
     "storage": {
         "alembicDir": "_private/alembic"
     },
+    "mobile": {
+        "showHomeLink": true,
+        "appDir": "_private/mobile-app",
+        "appModule": "tutorial.module#TutorialModule",
+        "assetDir": "_private/mobile-assets",
+        "icon": "/assets/peek_plugin_tutorial/icon.png",
+        "moduleDir": "plugin-module"
+    },
+    "desktop": {
+        "moduleDir": "plugin-module"
+    },
     "doc-admin": {
         "docDir": "doc-admin",
         "docRst": "index.rst"
@@ -45,11 +56,5 @@
         "docDir": "doc-dev",
         "docRst": "index.rst",
         "hasApi": false
-    },
-    "mobile": {
-        "moduleDir": "plugin-module"
-    },
-    "desktop": {
-        "moduleDir": "plugin-module"
     }
 }
