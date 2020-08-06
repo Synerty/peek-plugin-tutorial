@@ -13,6 +13,7 @@
         "client",
         "agent",
         "storage",
+        "admin",
         "doc-admin",
         "doc-user",
         "doc-dev"
@@ -22,6 +23,12 @@
     "client": {
     },
     "agent": {
+    },
+    "admin": {
+        "showHomeLink": true,
+        "appDir": "_private/admin-app",
+        "appModule": "tutorial.module#TutorialModule",
+        "moduleDir": "plugin-module"
     },
     "storage": {
         "alembicDir": "_private/alembic"
@@ -34,12 +41,10 @@
         "docDir": "doc-user",
         "docRst": "index.rst"
     },
+    "doc-dev": {
         "docDir": "doc-dev",
         "docRst": "index.rst",
         "hasApi": false
-    },
-    "admin": {
-        "moduleDir": "plugin-module"
     },
     "mobile": {
         "moduleDir": "plugin-module"
