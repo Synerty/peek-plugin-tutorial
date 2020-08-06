@@ -14,6 +14,8 @@
         "agent",
         "storage",
         "admin",
+        "mobile",
+        "desktop",
         "doc-admin",
         "doc-user",
         "doc-dev"
@@ -42,6 +44,11 @@
         "moduleDir": "plugin-module"
     },
     "desktop": {
+        "appDir": "_private/desktop-app",
+        "appModule": "tutorial.module#TutorialModule",
+        "assetDir": "_private/desktop-assets",
+        "icon": "/assets/peek_plugin_tutorial/icon.png",
+        "showHomeLink": true,
         "moduleDir": "plugin-module"
     },
     "doc-admin": {
