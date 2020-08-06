@@ -4,6 +4,8 @@ from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHo
 from peek_plugin_tutorial._private.storage import DeclarativeBase
 from peek_plugin_tutorial._private.storage.DeclarativeBase import loadStorageTuples
 from peek_plugin_base.server.PluginServerStorageEntryHookABC import PluginServerStorageEntryHookABC
+from peek_plugin_tutorial._private.tuples import loadPrivateTuples
+from peek_plugin_tutorial.tuples import loadPublicTuples
 
 logger = logging.getLogger(__name__)
 
@@ -25,6 +27,8 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
 
         """
         loadStorageTuples()
+        loadPrivateTuples()
+        loadPublicTuples()
         logger.debug("Loaded")
 
     def start(self):
