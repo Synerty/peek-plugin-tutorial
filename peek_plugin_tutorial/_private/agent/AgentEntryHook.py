@@ -4,6 +4,8 @@ from peek_plugin_base.agent.PluginAgentEntryHookABC import PluginAgentEntryHookA
 from peek_plugin_tutorial._private.storage.DeclarativeBase import loadStorageTuples
 from peek_plugin_tutorial._private.tuples import loadPrivateTuples
 from peek_plugin_tutorial.tuples import loadPublicTuples
+from .AgentToServerRpcCallExample import AgentToServerRpcCallExample
+from .RpcForServer import RpcForServer
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +38,10 @@ class AgentEntryHook(PluginAgentEntryHookABC):
         Place any custom initialiastion steps here.
 
         """
+        # Initialise and start the AgentToServerRpcCallExample
+        self._loadedObjects.append(AgentToServerRpcCallExample().start())
+        # Initialise and start the RPC for Server
+        self._loadedObjects.extend(RpcForServer().makeHandlers())
         logger.debug("Started")
 
     def stop(self):

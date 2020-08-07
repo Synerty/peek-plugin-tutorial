@@ -10,6 +10,8 @@ from .admin_backend import makeAdminBackendHandlers
 from .tuple_providers.TupleDataObservable import makeTupleDataObservableHandler
 from .TupleActionProcessor import makeTupleActionProcessorHandler
 from .controller.MainController import MainController
+from .agent_handlers.RpcForAgent import RpcForAgent
+from .ServerToAgentRpcCallExample import ServerToAgentRpcCallExample
 
 logger = logging.getLogger(__name__)
 
@@ -52,7 +54,10 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         mainController = MainController(dbSessionCreator=self.dbSessionCreator, tupleObservable=tupleObservable)
         self._loadedObjects.append(mainController)
         self._loadedObjects.append(makeTupleActionProcessorHandler(mainController))
-
+        # Initialise the RpcForAgent
+        self._loadedObjects.extend(RpcForAgent(mainController, self.dbSessionCreator).makeHandlers())
+        # Initialise and start the RPC for Server
+        self._loadedObjects.append(ServerToAgentRpcCallExample().start())
         logger.debug("Started")
 
     def stop(self):
