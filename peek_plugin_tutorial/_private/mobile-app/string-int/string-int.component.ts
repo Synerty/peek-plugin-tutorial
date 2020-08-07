@@ -1,12 +1,17 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
-import {StringIntTuple, tutorialBaseUrl} from "@peek/peek_plugin_tutorial/_private";
-
+import {
+    StringIntTuple,
+    tutorialBaseUrl,
+    AddIntValueActionTuple,
+    StringCapToggleActionTuple,
+} from "@peek/peek_plugin_tutorial/_private";
 import {
     ComponentLifecycleEventEmitter,
     TupleDataObserverService,
     TupleSelector,
-    TupleDataOfflineObserverService
+    TupleDataOfflineObserverService,
+    TupleActionPushService
 } from "@synerty/vortexjs";
 
 @Component({
@@ -22,6 +27,7 @@ export class StringIntComponent extends ComponentLifecycleEventEmitter {
         private tupleDataObserver: TupleDataObserverService,
         // private tupleDataObserver: TupleDataOfflineObserverService,
         private router: Router,
+        private actionService: TupleActionPushService,
     ) {
         super();
 
@@ -41,11 +47,49 @@ export class StringIntComponent extends ComponentLifecycleEventEmitter {
         // unsubscribe when this component is destroyed
         // This is a feature of ComponentLifecycleEventEmitter
         this.onDestroyEvent.subscribe(() => sup.unsubscribe());
-
     }
 
     mainClicked() {
         this.router.navigate([tutorialBaseUrl]);
     }
 
+    toggleUpperClicked(item) {
+        let action = new StringCapToggleActionTuple();
+        action.stringIntId = item.id;
+        this.actionService.pushAction(action)
+            .then(() => {
+                alert('success');
+
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
+
+    incrementClicked(item) {
+        let action = new AddIntValueActionTuple();
+        action.stringIntId = item.id;
+        action.offset = 1;
+        this.actionService.pushAction(action)
+            .then(() => {
+                alert('success');
+
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
+
+    decrementClicked(item) {
+        let action = new AddIntValueActionTuple();
+        action.stringIntId = item.id;
+        action.offset = -1;
+        this.actionService.pushAction(action)
+            .then(() => {
+                alert('success');
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    }
 }

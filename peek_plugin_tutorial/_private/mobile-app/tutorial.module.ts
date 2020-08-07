@@ -11,12 +11,16 @@ import {
     TupleOfflineStorageService,
     TupleDataObservableNameService,
     TupleDataObserverService,
-    TupleDataOfflineObserverService
+    TupleDataOfflineObserverService,
+    TupleActionPushNameService,
+    TupleActionPushOfflineService,
+    TupleActionPushService,
 } from "@synerty/vortexjs";
 import {
     tutorialTupleOfflineServiceName,
     tutorialObservableName,
-    tutorialFilt
+    tutorialFilt,
+    tutorialActionProcessorName,
 } from "@peek/peek_plugin_tutorial/_private";
 
 // Import the default route component
@@ -29,6 +33,10 @@ export function tupleOfflineStorageNameServiceFactory() {
 
 export function tupleDataObservableNameServiceFactory() {
     return new TupleDataObservableNameService(tutorialObservableName, tutorialFilt);
+}
+
+export function tupleActionPushNameServiceFactory() {
+    return new TupleActionPushNameService(tutorialActionProcessorName, tutorialFilt);
 }
 
 // Define the child routes for this plugin
@@ -63,6 +71,10 @@ export const pluginRoutes: Routes = [
         TupleDataObserverService, TupleDataOfflineObserverService, {
             provide: TupleDataObservableNameService,
             useFactory: tupleDataObservableNameServiceFactory
+        },
+        TupleActionPushOfflineService, TupleActionPushService, {
+            provide: TupleActionPushNameService,
+            useFactory: tupleActionPushNameServiceFactory
         },
     ],
     declarations: [
