@@ -1,6 +1,8 @@
 from .StringIntTableHandler import makeStringIntTableHandler
 from .SettingPropertyHandler import makeSettingPropertyHandler
 
-def makeAdminBackendHandlers(dbSessionCreator):
-    yield makeStringIntTableHandler(dbSessionCreator)
+from vortex.handler.TupleDataObservableHandler import TupleDataObservableHandler
+
+def makeAdminBackendHandlers(tupleObservable: TupleDataObservableHandler, dbSessionCreator):
+    yield makeStringIntTableHandler(tupleObservable, dbSessionCreator)
     yield makeSettingPropertyHandler(dbSessionCreator)
