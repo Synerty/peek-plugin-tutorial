@@ -12,6 +12,9 @@ from .TupleActionProcessor import makeTupleActionProcessorHandler
 from .controller.MainController import MainController
 from .agent_handlers.RpcForAgent import RpcForAgent
 from .ServerToAgentRpcCallExample import ServerToAgentRpcCallExample
+from .TutorialApi import TutorialApi
+from peek_plugin_inbox.server.InboxApiABC import InboxApiABC
+from .ExampleUseTaskApi import ExampleUseTaskApi
 
 logger = logging.getLogger(__name__)
 
@@ -24,6 +27,7 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
 
         #: Loaded Objects, This is a list of all objects created when we start
         self._loadedObjects = []
+        self._api = None
 
     def load(self) -> None:
         """ Load
@@ -57,7 +61,17 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         # Initialise the RpcForAgent
         self._loadedObjects.extend(RpcForAgent(mainController, self.dbSessionCreator).makeHandlers())
         # Initialise and start the RPC for Server
-        self._loadedObjects.append(ServerToAgentRpcCallExample().start())
+        # self._loadedObjects.append(ServerToAgentRpcCallExample().start())
+        # Initialise the API object that will be shared with other plugins
+        self._api = TutorialApi(mainController)
+        self._loadedObjects.append(self._api)
+        # Get a reference for the Inbox Task
+        inboxApi = self.platform.getOtherPluginApi("peek_plugin_inbox")
+        assert isinstance(inboxApi, InboxApiABC), "Wrong inboxApi"
+        # Initialise the example code that will send the test task
+        self._loadedObjects.append(
+            ExampleUseTaskApi(mainController, inboxApi).start()
+        )
         logger.debug("Started")
 
     def stop(self):
@@ -69,7 +83,7 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         # Shutdown and dereference all objects we constructed when we started
         while self._loadedObjects:
             self._loadedObjects.pop().shutdown()
-
+        self._api = None
         logger.debug("Stopped")
 
     def unload(self):
@@ -85,3 +99,11 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
     def dbMetadata(self):
         return DeclarativeBase.metadata
 
+    @property
+    def publishedServerApi(self) -> object:
+        """ Published Server API
+
+        :return  class that implements the API that can be used by other Plugins on this
+        platform service.
+        """
+        return self._api
