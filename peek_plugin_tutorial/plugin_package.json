@@ -16,6 +16,7 @@
         "admin",
         "mobile",
         "desktop",
+        "worker",
         "doc-admin",
         "doc-user",
         "doc-dev"
@@ -50,6 +51,8 @@
         "icon": "/assets/peek_plugin_tutorial/icon.png",
         "showHomeLink": true,
         "moduleDir": "plugin-module"
+    },
+    "worker": {
     },
     "doc-admin": {
         "docDir": "doc-admin",

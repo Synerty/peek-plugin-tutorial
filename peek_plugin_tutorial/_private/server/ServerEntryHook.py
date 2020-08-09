@@ -15,11 +15,13 @@ from .ServerToAgentRpcCallExample import ServerToAgentRpcCallExample
 from .TutorialApi import TutorialApi
 from peek_plugin_inbox.server.InboxApiABC import InboxApiABC
 from .ExampleUseTaskApi import ExampleUseTaskApi
+from peek_plugin_base.server.PluginServerWorkerEntryHookABC import PluginServerWorkerEntryHookABC
+from peek_plugin_tutorial._private.server.controller.RandomNumberWorkerController import RandomNumberWorkerController
 
 logger = logging.getLogger(__name__)
 
 
-class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC):
+class ServerEntryHook(PluginServerWorkerEntryHookABC, PluginServerEntryHookABC, PluginServerStorageEntryHookABC):
     def __init__(self, *args, **kwargs):
         """" Constructor """
         # Call the base classes constructor
@@ -72,6 +74,10 @@ class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC)
         self._loadedObjects.append(
             ExampleUseTaskApi(mainController, inboxApi).start()
         )
+        # Assign work to worker
+        randomNumberController = RandomNumberWorkerController()
+        self._loadedObjects.append(randomNumberController)
+        randomNumberController.start()
         logger.debug("Started")
 
     def stop(self):
