@@ -3,11 +3,11 @@ import {FormsModule} from "@angular/forms";
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
 
-import {EditSettingComponent} from "./edit-setting-table/edit.component";
-import {EditStringIntComponent} from "./edit-string-int-table/edit.component";
 
 // Import our components
 import {TutorialComponent} from "./tutorial.component";
+import {EditStringIntComponent} from "./edit-string-int-table/edit.component";
+import {EditSettingComponent} from "./edit-setting-table/edit.component";
 
 // Define the routes for this Angular module
 export const pluginRoutes: Routes = [
@@ -15,8 +15,7 @@ export const pluginRoutes: Routes = [
         path: '',
         pathMatch: 'full',
         component: TutorialComponent
-    }
-
+    },
 ];
 
 // Define the module
@@ -34,6 +33,4 @@ export const pluginRoutes: Routes = [
         EditSettingComponent
     ]
 })
-export class TutorialModule {
-
-}
+export class TutorialModule { }
