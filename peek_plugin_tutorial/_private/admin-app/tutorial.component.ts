@@ -4,7 +4,7 @@ import {Component, OnInit} from "@angular/core";
     selector: 'tutorial-admin',
     templateUrl: 'tutorial.component.html'
 })
-export class TutorialComponent implements OnInit {
+export class TutorialComponent  implements OnInit {
 
     ngOnInit() {
 

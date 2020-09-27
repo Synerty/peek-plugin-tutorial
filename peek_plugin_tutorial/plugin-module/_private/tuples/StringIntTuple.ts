@@ -4,7 +4,7 @@ import {tutorialTuplePrefix} from "../PluginNames";
 
 @addTupleType
 export class StringIntTuple extends Tuple {
-    public static readonly tupleName = tutorialTuplePrefix + 'StringIntTuple';
+    public static readonly tupleName = tutorialTuplePrefix + "StringIntTuple";
 
     //  Description of date1
     id : number;
