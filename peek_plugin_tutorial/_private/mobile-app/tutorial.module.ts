@@ -20,7 +20,7 @@ import {
     tutorialObservableName,
     tutorialFilt,
     tutorialActionProcessorName,
-} from "@_peek/peek_plugin_tutorial/_private";
+} from "@peek/peek_plugin_tutorial/_private";
 import { TutorialComponent } from "./tutorial.component";
 import { StringIntComponent } from "./string-int/string-int.component";
 

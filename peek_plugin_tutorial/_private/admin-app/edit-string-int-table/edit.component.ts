@@ -1,7 +1,7 @@
 import { Component } from "@angular/core"
 import { BalloonMsgService, NgLifeCycleEvents } from "@synerty/peek-plugin-base-js"
 import { extend, TupleLoader, VortexService } from "@synerty/vortexjs"
-import { StringIntTuple, tutorialFilt } from "@_peek/peek_plugin_tutorial/_private"
+import { StringIntTuple, tutorialFilt } from "@peek/peek_plugin_tutorial/_private"
 
 @Component({
     selector: "pl-tutorial-edit-string-int",
