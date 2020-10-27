@@ -11,8 +11,7 @@ import { NgLifeCycleEvents } from "@synerty/peek-plugin-base-js"
 
 @Component({
     selector: "plugin-tutorial-string-int",
-    templateUrl: "string-int.component.mweb.html",
-    moduleId: module.id
+    templateUrl: "string-int.component.mweb.html"
 })
 export class StringIntComponent extends NgLifeCycleEvents {
     stringInts: Array<StringIntTuple> = []
