@@ -7,7 +7,7 @@
     "website": "www.synerty.com"
   },
   "requiresServices": [
-    "doc-admin", "doc-dev", "doc-user", "server", "client", "agent", "storage", "admin", "mobile", "desktop", "worker"
+    "doc-admin", "doc-dev", "doc-user", "server", "agent", "storage", "admin", "field", "office", "worker"
   ],
   "doc-dev": {
     "docDir": "doc-dev",
@@ -25,9 +25,7 @@
   "server": {
 
   },
-  "client": {
 
-  },
   "agent": {
 
   },
@@ -40,7 +38,7 @@
     "appModule": "tutorial.module#TutorialModule",
     "moduleDir": "plugin-module"
   },
-  "mobile": {
+  "field": {
     "showHomeLink": true,
     "appDir": "_private/mobile-app",
     "appModule": "tutorial.module#TutorialModule",
@@ -48,7 +46,7 @@
     "icon": "/assets/peek_plugin_tutorial/icon.png",
     "moduleDir": "plugin-module"
   },
-  "desktop": {
+  "office": {
     "showHomeLink": true,
     "appDir": "_private/desktop-app",
     "appModule": "tutorial.module#TutorialModule",
