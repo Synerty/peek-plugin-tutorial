@@ -1,6 +1,6 @@
 import logging
 
-from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHookABC
+from peek_plugin_base.server.PluginLogicEntryHookABC import PluginLogicEntryHookABC
 
 from peek_plugin_tutorial._private.storage import DeclarativeBase
 from peek_plugin_tutorial._private.storage.DeclarativeBase import loadStorageTuples
@@ -33,11 +33,11 @@ from peek_plugin_tutorial._private.server.controller.RandomNumberWorkerControlle
 
 logger = logging.getLogger(__name__)
 
-class ServerEntryHook(PluginServerEntryHookABC, PluginServerStorageEntryHookABC, PluginServerWorkerEntryHookABC):
+class LogicEntryHook(PluginLogicEntryHookABC, PluginServerStorageEntryHookABC, PluginServerWorkerEntryHookABC):
     def __init__(self, *args, **kwargs):
         """" Constructor """
         # Call the base classes constructor
-        PluginServerEntryHookABC.__init__(self, *args, **kwargs)
+        PluginLogicEntryHookABC.__init__(self, *args, **kwargs)
 
         #: Loaded Objects, This is a list of all objects created when we start
         self._loadedObjects = []
