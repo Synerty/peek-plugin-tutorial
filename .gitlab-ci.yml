@@ -27,7 +27,7 @@ unit_tests_linux:
         - export TWINE_REPOSITORY_URL=http://${NEXUS_URL}/repository/pypi-internal/
         - export TWINE_USERNAME=${NEXUS_USER}
         - export TWINE_PASSWORD=${NEXUS_PASSWORD}
-        - if [ ${CI_PROJECT_NAMESPACE} == 'peek' -a ${CI_COMMIT_REF_NAME} == 'master' ];
+        - if [[ ${CI_PROJECT_NAMESPACE} == peek/* ]] && [[ ${CI_COMMIT_REF_NAME} == 'master' ]];
             then python setup.py sdist && twine upload dist/*.gz; fi
     stage: test
     artifacts:
@@ -51,7 +51,7 @@ sonar:
         - source $NVM_DIR/nvm.sh
         - nvm use $LATEST_NODE_VERSION
         - export NODE_PATH=`npm root -g`
-        - npm install -g typescript@3.7.5
+        - npm install -g typescript@3.8.3
         - sonar-scanner
     tags:
         - linux
