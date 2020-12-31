@@ -1,61 +1,65 @@
 {
-  "plugin": {
-    "title": "Tutorial Plugin",
-    "packageName": "peek_plugin_tutorial",
-    "version": "0.0.0",
-    "creator": "Synerty Pty Ltd",
-    "website": "www.synerty.com"
-  },
-  "requiresServices": [
-    "doc-admin", "doc-dev", "doc-user", "logic", "agent", "storage", "admin", "field", "office", "worker"
-  ],
-  "doc-dev": {
-    "docDir": "doc-dev",
-    "docRst": "index.rst",
-    "hasApi": true
-  },
-  "doc-admin": {
-    "docDir": "doc-admin",
-    "docRst": "index.rst"
-  },
-  "doc-user": {
-    "docDir": "doc-user",
-    "docRst": "index.rst"
-  },
-  "logic": {
-
-  },
-
-  "agent": {
-
-  },
-  "storage": {
-    "alembicDir": "_private/alembic"
-  },
-  "admin": {
-    "showHomeLink": true,
-    "appDir": "_private/admin-app",
-    "appModule": "tutorial.module#TutorialModule",
-    "moduleDir": "plugin-module"
-  },
-  "field": {
-    "showHomeLink": true,
-    "appDir": "_private/mobile-app",
-    "appModule": "tutorial.module#TutorialModule",
-    "assetDir": "_private/mobile-assets",
-    "icon": "/assets/peek_plugin_tutorial/icon.png",
-    "moduleDir": "plugin-module"
-  },
-  "office": {
-    "showHomeLink": true,
-    "appDir": "_private/desktop-app",
-    "appModule": "tutorial.module#TutorialModule",
-    "assetDir": "_private/mobile-assets",
-    "icon": "/assets/peek_plugin_tutorial/icon.png",
-    "moduleDir": "plugin-module"
-  },
-  "worker": {
-
-  }
-  
+    "plugin": {
+        "title": "Tutorial Plugin",
+        "packageName": "peek_plugin_tutorial",
+        "version": "0.0.0",
+        "creator": "Synerty Pty Ltd",
+        "website": "www.synerty.com"
+    },
+    "requiresServices": [
+        "admin-doc",
+        "field-doc",
+        "office-doc",
+        "logic",
+        "agent",
+        "storage",
+        "admin",
+        "field",
+        "office",
+        "worker"
+    ],
+    "admin-doc": {
+        "docDir": "admin-doc",
+        "docRst": "index.rst",
+        "hasApi": true
+    },
+    "field-doc": {
+        "docDir": "both-doc",
+        "docRst": "index.rst"
+    },
+    "office-doc": {
+        "docDir": "both-doc",
+        "docRst": "index.rst"
+    },
+    "logic": {
+    },
+    "agent": {
+    },
+    "storage": {
+        "alembicDir": "_private/alembic"
+    },
+    "admin": {
+        "showHomeLink": true,
+        "appDir": "_private/admin-app",
+        "appModule": "tutorial.module#TutorialModule",
+        "moduleDir": "plugin-module"
+    },
+    "field": {
+        "showHomeLink": true,
+        "appDir": "_private/mobile-app",
+        "appModule": "tutorial.module#TutorialModule",
+        "assetDir": "_private/mobile-assets",
+        "icon": "/assets/peek_plugin_tutorial/icon.png",
+        "moduleDir": "plugin-module"
+    },
+    "office": {
+        "showHomeLink": true,
+        "appDir": "_private/desktop-app",
+        "appModule": "tutorial.module#TutorialModule",
+        "assetDir": "_private/mobile-assets",
+        "icon": "/assets/peek_plugin_tutorial/icon.png",
+        "moduleDir": "plugin-module"
+    },
+    "worker": {
+    }
 }
