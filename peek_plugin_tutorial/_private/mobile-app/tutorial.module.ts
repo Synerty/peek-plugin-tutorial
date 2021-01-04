@@ -1,10 +1,10 @@
-import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
-import { Routes } from "@angular/router";
-import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
-import { NzIconModule } from "ng-zorro-antd/icon";
-import { RouterModule } from "@angular/router";
+import { CommonModule } from "@angular/common"
+import { NgModule } from "@angular/core"
+import { Routes } from "@angular/router"
+import { HttpClientModule } from "@angular/common/http"
+import { FormsModule } from "@angular/forms"
+import { NzIconModule } from "ng-zorro-antd/icon"
+import { RouterModule } from "@angular/router"
 import {
     TupleOfflineStorageNameService,
     TupleOfflineStorageService,
@@ -14,32 +14,32 @@ import {
     TupleActionPushNameService,
     TupleActionPushOfflineService,
     TupleActionPushService,
-} from "@synerty/vortexjs";
+} from "@synerty/vortexjs"
 import {
     tutorialTupleOfflineServiceName,
     tutorialObservableName,
     tutorialFilt,
     tutorialActionProcessorName,
-} from "@peek/peek_plugin_tutorial/_private";
-import { TutorialComponent } from "./tutorial.component";
-import { StringIntComponent } from "./string-int/string-int.component";
+} from "@peek/peek_plugin_tutorial/_private"
+import { TutorialComponent } from "./tutorial.component"
+import { StringIntComponent } from "./string-int/string-int.component"
 
 export function tupleOfflineStorageNameServiceFactory() {
-    return new TupleOfflineStorageNameService(tutorialTupleOfflineServiceName);
+    return new TupleOfflineStorageNameService(tutorialTupleOfflineServiceName)
 }
 
 export function tupleDataObservableNameServiceFactory() {
     return new TupleDataObservableNameService(
         tutorialObservableName,
         tutorialFilt
-    );
+    )
 }
 
 export function tupleActionPushNameServiceFactory() {
     return new TupleActionPushNameService(
         tutorialActionProcessorName,
         tutorialFilt
-    );
+    )
 }
 
 export const pluginRoutes: Routes = [
@@ -52,7 +52,7 @@ export const pluginRoutes: Routes = [
         pathMatch: "full",
         component: TutorialComponent,
     },
-];
+]
 
 @NgModule({
     imports: [
@@ -84,4 +84,5 @@ export const pluginRoutes: Routes = [
     ],
     declarations: [TutorialComponent, StringIntComponent],
 })
-export class TutorialModule {}
+export class TutorialModule {
+}

@@ -2,6 +2,7 @@ import logging
 
 from peek_plugin_base.worker.PluginWorkerEntryHookABC import PluginWorkerEntryHookABC
 from peek_plugin_tutorial._private.worker.tasks import RandomNumber
+
 logger = logging.getLogger(__name__)
 
 
@@ -15,7 +16,7 @@ class WorkerEntryHook(PluginWorkerEntryHookABC):
         self._loadedObjects = []
 
     def load(self) -> None:
-        """ Load
+        """Load
 
         This will be called when the plugin is loaded, just after the db is migrated.
         Place any custom initialiastion steps here.
@@ -24,7 +25,7 @@ class WorkerEntryHook(PluginWorkerEntryHookABC):
         logger.debug("Loaded")
 
     def start(self):
-        """ Load
+        """Load
 
         This will be called when the plugin is loaded, just after the db is migrated.
         Place any custom initialiastion steps here.
@@ -33,7 +34,7 @@ class WorkerEntryHook(PluginWorkerEntryHookABC):
         logger.debug("Started")
 
     def stop(self):
-        """ Stop
+        """Stop
 
         This method is called by the platform to tell the peek app to shutdown and stop
         everything it's doing

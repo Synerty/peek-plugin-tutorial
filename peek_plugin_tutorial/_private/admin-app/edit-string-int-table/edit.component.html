@@ -3,13 +3,13 @@
         Edit String Ints
         <div class="btn-toolbar pull-right">
             <div class="btn-group">
-                <div class="btn btn-default btn-sm" (click)="save()">
+                <div (click)="save()" class="btn btn-default btn-sm">
                     Save
                 </div>
-                <div class="btn btn-default btn-sm" (click)="resetClicked()">
+                <div (click)="resetClicked()" class="btn btn-default btn-sm">
                     Reset
                 </div>
-                <div class="btn btn-default btn-sm" (click)="addRow()">
+                <div (click)="addRow()" class="btn btn-default btn-sm">
                     Add
                 </div>
             </div>
@@ -38,8 +38,10 @@
                     />
                 </td>
                 <td>
-                    <div class="btn btn-default" (click)="removeRow(item)">
-                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                    <div (click)="removeRow(item)" class="btn btn-default">
+                        <span
+                            aria-hidden="true" class="glyphicon glyphicon-minus"
+                        ></span>
                     </div>
                 </td>
             </tr>

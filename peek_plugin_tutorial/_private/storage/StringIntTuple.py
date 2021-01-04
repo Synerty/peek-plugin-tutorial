@@ -8,8 +8,8 @@ from peek_plugin_tutorial._private.storage.DeclarativeBase import DeclarativeBas
 
 @addTupleType
 class StringIntTuple(Tuple, DeclarativeBase):
-    __tupleType__ = tutorialTuplePrefix + 'StringIntTuple'
-    __tablename__ = 'StringIntTuple'
+    __tupleType__ = tutorialTuplePrefix + "StringIntTuple"
+    __tablename__ = "StringIntTuple"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     string1 = Column(String)

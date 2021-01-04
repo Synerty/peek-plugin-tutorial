@@ -1,13 +1,13 @@
-import {Component} from "@angular/core";
+import { Component } from "@angular/core"
 
 @Component({
-    selector: 'plugin-tutorial',
-    templateUrl: 'tutorial.component.dweb.html'
+    selector: "plugin-tutorial",
+    templateUrl: "tutorial.component.dweb.html"
 })
 export class TutorialComponent {
-
+    
     constructor() {
-
+    
     }
-
+    
 }

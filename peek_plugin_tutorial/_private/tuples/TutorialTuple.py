@@ -5,11 +5,12 @@ from peek_plugin_tutorial._private.PluginNames import tutorialTuplePrefix
 
 @addTupleType
 class TutorialTuple(Tuple):
-    """ Tutorial Tuple
+    """Tutorial Tuple
 
     This tuple is a create example of defining classes to work with our data.
     """
-    __tupleType__ = tutorialTuplePrefix + 'TutorialTuple'
+
+    __tupleType__ = tutorialTuplePrefix + "TutorialTuple"
 
     #:  Description of date1
     dict1 = TupleField(defaultValue=dict)

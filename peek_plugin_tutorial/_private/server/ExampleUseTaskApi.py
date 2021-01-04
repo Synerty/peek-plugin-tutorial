@@ -6,7 +6,9 @@ from twisted.internet import reactor
 from twisted.internet.defer import inlineCallbacks
 
 from peek_plugin_inbox.server.InboxApiABC import InboxApiABC, NewTask
-from peek_plugin_tutorial._private.server.controller.MainController import MainController
+from peek_plugin_tutorial._private.server.controller.MainController import (
+    MainController,
+)
 from peek_plugin_tutorial._private.PluginNames import tutorialPluginName
 
 logger = logging.getLogger(__name__)
@@ -34,7 +36,7 @@ class ExampleUseTaskApi:
             autoDelete=NewTask.AUTO_DELETE_ON_SELECT,
             overwriteExisting=True,
             notificationRequiredFlags=NewTask.NOTIFY_BY_DEVICE_SOUND
-                                      | NewTask.NOTIFY_BY_EMAIL
+            | NewTask.NOTIFY_BY_EMAIL,
         )
 
         # Now send the task via the active tasks API

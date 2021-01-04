@@ -4,10 +4,9 @@ from peek_plugin_tutorial.tuples.DoSomethingTuple import DoSomethingTuple
 
 
 class TutorialApiABC(metaclass=ABCMeta):
-
     @abstractmethod
-    def doSomethingGood(self, somethingsDescription:str) -> DoSomethingTuple:
-        """ Add a New Task
+    def doSomethingGood(self, somethingsDescription: str) -> DoSomethingTuple:
+        """Add a New Task
 
         Add a new task to the users device.
 

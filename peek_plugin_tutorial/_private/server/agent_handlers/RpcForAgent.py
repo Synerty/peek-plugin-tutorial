@@ -2,7 +2,9 @@ import logging
 
 from peek_plugin_base.PeekVortexUtil import peekServerName, peekAgentName
 from peek_plugin_tutorial._private.PluginNames import tutorialFilt
-from peek_plugin_tutorial._private.server.controller.MainController import MainController
+from peek_plugin_tutorial._private.server.controller.MainController import (
+    MainController,
+)
 from peek_plugin_tutorial._private.storage.StringIntTuple import StringIntTuple
 from vortex.rpc.RPC import vortexRPC
 
@@ -15,7 +17,7 @@ class RpcForAgent:
         self._dbSessionCreator = dbSessionCreator
 
     def makeHandlers(self):
-        """ Make Handlers
+        """Make Handlers
 
         In this method we start all the RPC handlers
         start() returns an instance of it's self so we can simply yield the result
@@ -29,10 +31,11 @@ class RpcForAgent:
         logger.debug("RPCs started")
 
     # -------------
-    @vortexRPC(peekServerName,
-               acceptOnlyFromVortex=peekAgentName, additionalFilt=tutorialFilt)
+    @vortexRPC(
+        peekServerName, acceptOnlyFromVortex=peekAgentName, additionalFilt=tutorialFilt
+    )
     def addInts(self, val1, kwval1=9):
-        """ Add Ints
+        """Add Ints
 
         This is the simplest RPC example possible
 
@@ -40,10 +43,11 @@ class RpcForAgent:
         return val1 + kwval1
 
     # -------------
-    @vortexRPC(peekServerName,
-               acceptOnlyFromVortex=peekAgentName, additionalFilt=tutorialFilt)
+    @vortexRPC(
+        peekServerName, acceptOnlyFromVortex=peekAgentName, additionalFilt=tutorialFilt
+    )
     def updateStatus(self, updateStr: str):
-        """ Update Status
+        """Update Status
 
         The agent may be running something and send updates on occasion,
         tell these to the main controller, it can deal with them.
@@ -52,10 +56,14 @@ class RpcForAgent:
         self._mainController.agentNotifiedOfUpdate(updateStr)
 
     # -------------
-    @vortexRPC(peekServerName, acceptOnlyFromVortex=peekAgentName,
-               additionalFilt=tutorialFilt, deferToThread=True)
+    @vortexRPC(
+        peekServerName,
+        acceptOnlyFromVortex=peekAgentName,
+        additionalFilt=tutorialFilt,
+        deferToThread=True,
+    )
     def addStringInt(self, stringInt: StringIntTuple):
-        """ Insert a stringInt
+        """Insert a stringInt
 
         In this example RPC method, The agent tells the server to insert data into
         the database.

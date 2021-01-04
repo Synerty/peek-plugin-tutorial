@@ -15,14 +15,16 @@ class StringIntTupleProvider(TuplesProviderABC):
         self._ormSessionCreator = ormSessionCreator
 
     @deferToThreadWrap
-    def makeVortexMsg(self, filt: dict,
-                      tupleSelector: TupleSelector) -> Union[Deferred, bytes]:
+    def makeVortexMsg(
+        self, filt: dict, tupleSelector: TupleSelector
+    ) -> Union[Deferred, bytes]:
         # Potential filters can be placed here.
         # val1 = tupleSelector.selector["val1"]
 
         session = self._ormSessionCreator()
         try:
-            tasks = (session.query(StringIntTuple)
+            tasks = (
+                session.query(StringIntTuple)
                 # Potentially filter the results
                 # .filter(StringIntTuple.val1 == val1)
                 .all()

@@ -10,10 +10,9 @@ logger = logging.getLogger(__name__)
 
 
 class RandomNumberWorkerController:
+    """Random Number Generator
 
-    """ Random Number Generator
-
-        Generates random number on worker periodically
+    Generates random number on worker periodically
     """
 
     PERIOD = 5
@@ -50,13 +49,19 @@ class RandomNumberWorkerController:
 
     @inlineCallbacks
     def _sendToWorker(self, item):
-        from peek_plugin_tutorial._private.worker.tasks.RandomNumber import pickRandomNumber
+        from peek_plugin_tutorial._private.worker.tasks.RandomNumber import (
+            pickRandomNumber,
+        )
+
         startTime = datetime.now(pytz.utc)
 
         try:
             d = pickRandomNumber.delay(item)
             d.addTimeout(self.TASK_TIMEOUT, reactor)
             randomNumber = yield d
-            logger.debug("Time Taken = %s, Random Number: %s" % (datetime.now(pytz.utc) - startTime, randomNumber))
+            logger.debug(
+                "Time Taken = %s, Random Number: %s"
+                % (datetime.now(pytz.utc) - startTime, randomNumber)
+            )
         except Exception as e:
             logger.debug(" RandomNumber task failed : %s", str(e))

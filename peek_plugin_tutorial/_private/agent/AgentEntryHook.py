@@ -4,15 +4,14 @@ from peek_plugin_base.agent.PluginAgentEntryHookABC import PluginAgentEntryHookA
 
 from peek_plugin_tutorial._private.storage.DeclarativeBase import loadStorageTuples
 
-
 from peek_plugin_tutorial._private.tuples import loadPrivateTuples
 from peek_plugin_tutorial.tuples import loadPublicTuples
-
 
 from .AgentToServerRpcCallExample import AgentToServerRpcCallExample
 from .RpcForServer import RpcForServer
 
 logger = logging.getLogger(__name__)
+
 
 class AgentEntryHook(PluginAgentEntryHookABC):
     def __init__(self, *args, **kwargs):
@@ -24,38 +23,37 @@ class AgentEntryHook(PluginAgentEntryHookABC):
         self._loadedObjects = []
 
     def load(self) -> None:
-        """ Load
+        """Load
 
         This will be called when the plugin is loaded, just after the db is migrated.
         Place any custom initialiastion steps here.
 
         """
-        
-        loadStorageTuples() # <-- Add this line
-        
-        
+
+        loadStorageTuples()  # <-- Add this line
+
         loadPrivateTuples()
         loadPublicTuples()
-        
+
         logger.debug("Loaded")
 
     def start(self):
-        """ Load
+        """Load
 
         This will be called when the plugin is loaded, just after the db is migrated.
         Place any custom initialiastion steps here.
 
         """
-        
+
         # Initialise and start the AgentToServerRpcCallExample
         self._loadedObjects.append(AgentToServerRpcCallExample().start())
         # Initialise and start the RPC for Server
         self._loadedObjects.extend(RpcForServer().makeHandlers())
-        
+
         logger.debug("Started")
 
     def stop(self):
-        """ Stop
+        """Stop
 
         This method is called by the platform to tell the peek app to shutdown and stop
         everything it's doing

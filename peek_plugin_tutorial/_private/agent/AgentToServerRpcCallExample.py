@@ -21,7 +21,7 @@ class AgentToServerRpcCallExample:
 
     @inlineCallbacks
     def runWithInlineCallback(self):
-        """ Run With Inline Callbacks
+        """Run With Inline Callbacks
 
         To understand what the :code:`@inlineCallbacks` decorator does, you can read
         more in the twisted documentation.
@@ -59,7 +59,7 @@ class AgentToServerRpcCallExample:
         logger.debug("runWithInlineCallback finished")
 
     def run(self):
-        """ Run
+        """Run
 
         In this method, we call some RPCs and handle the deferreds.
 

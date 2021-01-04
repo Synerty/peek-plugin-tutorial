@@ -6,7 +6,11 @@ import {
     StringIntTuple,
     tutorialBaseUrl,
 } from "@peek/peek_plugin_tutorial/_private"
-import { TupleActionPushService, TupleDataObserverService, TupleSelector } from "@synerty/vortexjs"
+import {
+    TupleActionPushService,
+    TupleDataObserverService,
+    TupleSelector
+} from "@synerty/vortexjs"
 import { NgLifeCycleEvents } from "@synerty/peek-plugin-base-js"
 
 @Component({

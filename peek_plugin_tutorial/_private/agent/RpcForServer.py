@@ -12,7 +12,7 @@ class RpcForServer:
         pass
 
     def makeHandlers(self):
-        """ Make Handlers
+        """Make Handlers
 
         In this method we start all the RPC handlers
         start() returns an instance of it's self so we can simply yield the result
@@ -26,7 +26,7 @@ class RpcForServer:
     # -------------
     @vortexRPC(peekAgentName, additionalFilt=tutorialFilt)
     def subInts(self, val1, kwval1=9):
-        """ Add Ints
+        """Add Ints
 
         This is the simplest RPC example possible.
 

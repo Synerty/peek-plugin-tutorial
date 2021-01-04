@@ -9,8 +9,12 @@ from vortex.handler.TupleActionProcessor import TupleActionProcessorDelegateABC
 from vortex.handler.TupleDataObservableHandler import TupleDataObservableHandler
 
 from peek_plugin_tutorial._private.storage.StringIntTuple import StringIntTuple
-from peek_plugin_tutorial._private.tuples.StringCapToggleActionTuple import StringCapToggleActionTuple
-from peek_plugin_tutorial._private.tuples.AddIntValueActionTuple import AddIntValueActionTuple
+from peek_plugin_tutorial._private.tuples.StringCapToggleActionTuple import (
+    StringCapToggleActionTuple,
+)
+from peek_plugin_tutorial._private.tuples.AddIntValueActionTuple import (
+    AddIntValueActionTuple,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -38,9 +42,11 @@ class MainController(TupleActionProcessorDelegateABC):
         try:
             # Perform update using SQLALchemy
             session = self._dbSessionCreator()
-            row = (session.query(StringIntTuple)
-                   .filter(StringIntTuple.id == action.stringIntId)
-                   .one())
+            row = (
+                session.query(StringIntTuple)
+                .filter(StringIntTuple.id == action.stringIntId)
+                .one()
+            )
 
             # Exit early if the string is empty
             if not row.string1:
@@ -70,9 +76,11 @@ class MainController(TupleActionProcessorDelegateABC):
         try:
             # Perform update using SQLALchemy
             session = self._dbSessionCreator()
-            row = (session.query(StringIntTuple)
-                   .filter(StringIntTuple.id == action.stringIntId)
-                   .one())
+            row = (
+                session.query(StringIntTuple)
+                .filter(StringIntTuple.id == action.stringIntId)
+                .one()
+            )
             row.int1 += action.offset
             session.commit()
 
@@ -89,4 +97,3 @@ class MainController(TupleActionProcessorDelegateABC):
 
     def agentNotifiedOfUpdate(self, updateStr):
         logger.debug("Agent said : %s", updateStr)
-

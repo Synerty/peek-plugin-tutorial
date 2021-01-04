@@ -1,6 +1,7 @@
 <div class="container">
-    <Button class="btn btn-default" (click)="mainClicked()">Back to Main</Button>
-
+    <Button (click)="mainClicked()" class="btn btn-default">Back to Main
+    </Button>
+    
     <table class="table table-striped">
         <thead>
         <tr>
@@ -14,13 +15,19 @@
             <td>{{item.string1}}</td>
             <td>{{item.int1}}</td>
             <td>
-                <Button class="btn btn-default" (click)="toggleUpperClicked(item)">
+                <Button
+                    (click)="toggleUpperClicked(item)" class="btn btn-default"
+                >
                     Toggle Caps
                 </Button>
-                <Button class="btn btn-default" (click)="incrementClicked(item)">
+                <Button
+                    (click)="incrementClicked(item)" class="btn btn-default"
+                >
                     Increment Int
                 </Button>
-                <Button class="btn btn-default" (click)="decrementClicked(item)">
+                <Button
+                    (click)="decrementClicked(item)" class="btn btn-default"
+                >
                     Decrement Int
                 </Button>
             </td>
