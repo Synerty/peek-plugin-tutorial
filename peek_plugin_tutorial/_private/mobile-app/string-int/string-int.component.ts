@@ -11,7 +11,7 @@ import {
     TupleDataObserverService,
     TupleSelector
 } from "@synerty/vortexjs"
-import { NgLifeCycleEvents } from "@synerty/peek-plugin-base-js"
+import { NgLifeCycleEvents } from "@synerty/vortexjs"
 
 @Component({
     selector: "plugin-tutorial-string-int",
