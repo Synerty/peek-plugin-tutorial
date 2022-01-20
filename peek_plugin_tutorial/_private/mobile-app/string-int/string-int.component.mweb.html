@@ -1,37 +1,41 @@
 <div class="container">
-    <Button (click)="mainClicked()" class="btn btn-default">Back to Main
-    </Button>
-    
+    <button (click)="mainClicked()" class="btn btn-default">
+        Back to Main
+    </button>
+
     <table class="table table-striped">
         <thead>
-        <tr>
-            <th>String</th>
-            <th>Int</th>
-            <th></th>
-        </tr>
+            <tr>
+                <th>String</th>
+                <th>Int</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of stringInts">
-            <td>{{item.string1}}</td>
-            <td>{{item.int1}}</td>
-            <td>
-                <Button
-                    (click)="toggleUpperClicked(item)" class="btn btn-default"
-                >
-                    Toggle Caps
-                </Button>
-                <Button
-                    (click)="incrementClicked(item)" class="btn btn-default"
-                >
-                    Increment Int
-                </Button>
-                <Button
-                    (click)="decrementClicked(item)" class="btn btn-default"
-                >
-                    Decrement Int
-                </Button>
-            </td>
-        </tr>
+            <tr *ngFor="let item of stringInts">
+                <td>{{item.string1}}</td>
+                <td>{{item.int1}}</td>
+                <td>
+                    <button
+                        (click)="toggleUpperClicked(item)"
+                        class="btn btn-default"
+                    >
+                        Toggle Caps
+                    </button>
+                    <button
+                        (click)="incrementClicked(item)"
+                        class="btn btn-default"
+                    >
+                        Increment Int
+                    </button>
+                    <button
+                        (click)="decrementClicked(item)"
+                        class="btn btn-default"
+                    >
+                        Decrement Int
+                    </button>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>

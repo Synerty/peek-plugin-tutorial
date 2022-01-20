@@ -31,10 +31,8 @@
         "docDir": "both-doc",
         "docRst": "index.rst"
     },
-    "logic": {
-    },
-    "agent": {
-    },
+    "logic": {},
+    "agent": {},
     "storage": {
         "alembicDir": "_private/alembic"
     },
@@ -60,6 +58,5 @@
         "icon": "/assets/peek_plugin_tutorial/icon.png",
         "moduleDir": "plugin-module"
     },
-    "worker": {
-    }
+    "worker": {}
 }
