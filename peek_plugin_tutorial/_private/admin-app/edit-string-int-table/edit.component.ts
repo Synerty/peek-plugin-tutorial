@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { BalloonMsgService } from "@synerty/peek-plugin-base-js";
 import {
-    extend,
     NgLifeCycleEvents,
     TupleLoader,
     VortexService,
@@ -31,7 +30,7 @@ export class EditStringIntComponent extends NgLifeCycleEvents {
         super();
 
         this.loader = vortexService.createTupleLoader(this, () => {
-            let filt = extend({}, this.filt, tutorialFilt);
+            let filt = Object.assign({}, this.filt, tutorialFilt);
             // If we wanted to filter the data we get, we could add this
             // filt["lookupName"] = 'lookupType';
             return filt;
