@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "peek-plugin-tutorial"
+version = "0.0.0"
+authors = [{name = "Synerty", email = "contact@synerty.com"}]
+description = "Peek Plugin Tutorial - My first peek plugin enhancement"
+keywords = ["Peek", "Python", "Platform", "synerty"]
+classifiers = []
+dependencies = ["peek-plugin-base==0.0.*,>=0.0.0"]
+
+[project.urls]
+Homepage = "https://bitbucket.org/synerty/peek-plugin-tutorial"
+Download = "https://bitbucket.org/synerty/peek-plugin-tutorial/get/0.0.0.zip"
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.packages.find]
+exclude = ["*.tests"] # *.tests.*; tests.*; tests
+namespaces = false
