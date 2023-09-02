@@ -7,7 +7,7 @@ from peek_plugin_tutorial._private.storage.DeclarativeBase import DeclarativeBas
 
 
 @addTupleType
-class StringIntTuple(Tuple, DeclarativeBase):
+class StringIntTuple(DeclarativeBase, Tuple):
     __tupleType__ = tutorialTuplePrefix + "StringIntTuple"
     __tablename__ = "StringIntTuple"
 
